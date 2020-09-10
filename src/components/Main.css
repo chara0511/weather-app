@@ -1,4 +1,9 @@
 body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+}
+
+.sizes {
+  max-width: 100%; /* 459px in 1440px */
 }
