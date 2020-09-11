@@ -3,11 +3,11 @@ export const WeatherReducer = (state, action) => {
     case "SHOWER":
       return state;
 
-    case "DATA":
-      return { ...state, data: action.payload };
+    case "CURRENT_WEATHER":
+      return { ...state, current: action.payload };
 
-    case "CITY":
-      return { ...state, city: action.payload };
+    case "WEATHER_FORECAST":
+      return { ...state, forecast: action.payload };
 
     case "CLEAR":
       return state;

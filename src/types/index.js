@@ -1,2 +1,2 @@
-export const DATA = "DATA";
-export const CITY = "CITY";
+export const CURRENT_WEATHER = "CURRENT_WEATHER";
+export const WEATHER_FORECAST = "WEATHER_FORECAST";

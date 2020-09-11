@@ -1,9 +1,0 @@
-.weather {
-  margin: 0;
-  border: 1px solid red;
-  height: 100vh;
-  background-color: #1e213a;
-}
-p {
-  z-index: -1;
-}
