@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { theme } from "../styles";
+import MapMarkerIcon from "../icons/mapMarkerIcon";
 
 const { fontSizes } = theme;
 
@@ -16,18 +17,25 @@ const DateNow = styled.p`
   padding: 0.5em 0;
 `;
 
-const GPS = styled(DateNow)`
+const MapMarker = styled(DateNow)`
   font-weight: 600;
+
+  & svg {
+    width: 22px;
+    height: 22px;
+    margin-top: -0.25em;
+  }
 `;
 
 const Today = () => {
+  const today = Date();
   return (
     <StyledContainer>
-      <DateNow>Today · Fri, 5 Jun</DateNow>
+      <DateNow>Today · {today}</DateNow>
 
-      <GPS>
-        <i>i</i> Helsinki
-      </GPS>
+      <MapMarker>
+        <MapMarkerIcon /> Helsinki
+      </MapMarker>
     </StyledContainer>
   );
 };

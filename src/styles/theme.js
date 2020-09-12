@@ -1,12 +1,16 @@
 const theme = {
   colors: {
-    highlight: "rgba(41, 61, 90, 0.99)",
-    transGreen: "rgba(100, 255, 218, 0.07)",
-    transNavy: "rgba(10, 25, 47, 0.7)",
-    shadowNavy: "rgba(2, 12, 27, 0.7)",
     white: "#E7E7EB",
     lightGrey: "#A09FB1",
     grey: "#88869D",
+    inputBg: "#6e707a",
+    grayish: "#616475",
+    background: "#1e213a",
+    buttonBackground: "#3c47e9",
+  },
+
+  shadows: {
+    input: "0px 4px 4px rgba(0, 0, 0, 0.25)",
   },
 
   fonts: {

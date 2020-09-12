@@ -11,6 +11,7 @@ import styled from "styled-components";
 const StyledContainer = styled.div`
   border: 1px solid red;
   margin: 0;
+  max-width: 460px;
   min-height: 100vh;
   background-color: #1e213a;
   display: flex;

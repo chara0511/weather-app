@@ -1,8 +1,12 @@
 import React from "react";
-import "./Main.css";
+import styled from "styled-components";
+
+const StyledContainer = styled.div`
+  max-width: 100%; /* 459px in 1440px */
+`;
 
 const Main = ({ children }) => {
-  return <div className="sizes">{children}</div>;
+  return <StyledContainer className="sizes">{children}</StyledContainer>;
 };
 
 export default Main;

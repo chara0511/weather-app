@@ -88,7 +88,10 @@ const GlobalStyles = createGlobalStyle`
     cursor: pointer;
     border: 0;
     border-radius: 0;
+    font-family: ${fonts.Raleway};
     transition: ${theme.transition};
+    font-weight: 600;
+    font-size: ${fontSizes.md};
 
     &:focus,
     &:active {
@@ -97,7 +100,13 @@ const GlobalStyles = createGlobalStyle`
   }
 
   input, textarea {
+    border: 0;
     border-radius: 0;
+    box-sizing: border-box;
+    font-family: ${fonts.Raleway};
+    line-height: 19px;
+    font-size: ${fontSizes.md};
+    font-weight: 500;
     outline: 0;
     margin: 0;
 
@@ -120,21 +129,18 @@ const GlobalStyles = createGlobalStyle`
   }
 
   ul {
+    font-size: ${fontSizes.md};
+    font-style: normal;
+    font-weight: 500; 
+    line-height: 19px;
+    list-style: none;
     padding: 0;
     margin: 0;
-    list-style: none;
 
     li {
+      margin-bottom: 12px;
       position: relative;
-      padding-left: 30px;
-      margin-bottom: 10px;
-
-      &:before {
-        content: '▹';
-        position: absolute;
-        left: 0;
-        /* color: ${colors.green}; */
-      }
+      padding: 22px 12px;
     }
   }
 
