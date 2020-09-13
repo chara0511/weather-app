@@ -14,10 +14,11 @@ const StyledContainer = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
+  max-width: 460px;
   padding: 18px 11px 0 11px;
 `;
 
-const StyledContent = styled.div`
+const StyledNav = styled.div`
   position: fixed;
   background: ${colors.background};
   max-width: 460px;
@@ -32,16 +33,17 @@ const StyledContent = styled.div`
 
 const Wrapper = styled.div`
   border: 1px solid red;
-  margin: 11px;
   height: 90vh;
+  margin: 11px; /* 11px 42px in 1440px */
+  position: relative;
 `;
 
 const CloseBtn = styled.button`
   background: transparent;
   padding: 0;
   position: absolute;
-  right: 11px;
-  top: 18px;
+  right: 0;
+  top: 7px;
 
   & svg {
     width: 24px;
@@ -52,6 +54,7 @@ const CloseBtn = styled.button`
 const Form = styled.form`
   display: flex;
   gap: 0.5em;
+  justify-content: space-between;
   margin: 60px auto;
   position: relative;
 
@@ -124,7 +127,7 @@ const Search = () => {
 
   return (
     <StyledContainer>
-      <StyledContent active={active}>
+      <StyledNav active={active}>
         <Wrapper>
           <CloseBtn onClick={() => setActive(false)}>
             <CloseIcon />
@@ -144,7 +147,7 @@ const Search = () => {
 
           <ListCities />
         </Wrapper>
-      </StyledContent>
+      </StyledNav>
 
       <InputClick
         type="text"

@@ -1,9 +1,11 @@
 import React from "react";
+
 import Main from "./components/Main";
 import Hero from "./components/Hero";
-import WeatherInfo from "./components/WeatherInfo";
 import WeatherState from "./context/weatherState";
+
 import GlobalStyles from "./styles/globalStyles";
+import Details from "./components/Details";
 
 function App() {
   return (
@@ -13,7 +15,8 @@ function App() {
       <WeatherState>
         <Main>
           <Hero />
-          <WeatherInfo />
+
+          <Details />
         </Main>
       </WeatherState>
     </>

@@ -6,6 +6,7 @@ const theme = {
     inputBg: "#6e707a",
     grayish: "#616475",
     background: "#1e213a",
+    backgroundDetails: "#100E1D",
     buttonBackground: "#3c47e9",
   },
 
@@ -20,13 +21,13 @@ const theme = {
 
   fontSizes: {
     xs: "12px",
-    smish: "13px",
     sm: "14px",
     md: "16px",
     lg: "18px",
-    xl: "20px",
+    xl: "24px",
     xxl: "45px",
     h1: "144px",
+    h2: "64px",
     h3: "36px",
   },
 
