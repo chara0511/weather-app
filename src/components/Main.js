@@ -25,7 +25,7 @@ const Main = () => {
 
   return (
     <StyledContainer>
-      {!loading ? (
+      {!loading ? ( //!loading
         <>
           <Hero />
 

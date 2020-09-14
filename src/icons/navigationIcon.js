@@ -1,6 +1,6 @@
 import React from "react";
 
-const navigationIcon = () => {
+const NavigationIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14,4 +14,4 @@ const navigationIcon = () => {
   );
 };
 
-export default navigationIcon;
+export default NavigationIcon;

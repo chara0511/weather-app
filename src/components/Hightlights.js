@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 import { theme } from "../styles";
-import WindStatus from "./WindStatus";
+import HumidityStatus from "./sections/HumidityStatus";
+import WindStatus from "./sections/WindStatus";
+
 const { colors, fontSizes } = theme;
 
 const StyledContainer = styled.div`
@@ -46,7 +48,9 @@ const Hightlights = () => {
           <WindStatus />
         </StyledContent>
 
-        <StyledContent>Humidity</StyledContent>
+        <StyledContent>
+          <HumidityStatus />
+        </StyledContent>
 
         <StyledContentSmall>Visibility</StyledContentSmall>
 
