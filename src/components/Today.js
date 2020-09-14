@@ -27,14 +27,14 @@ const MapMarker = styled(DateNow)`
   }
 `;
 
-const Today = () => {
+const Today = ({ city, country }) => {
   const today = Date();
   return (
     <StyledContainer>
       <DateNow>Today · {today}</DateNow>
 
       <MapMarker>
-        <MapMarkerIcon /> Helsinki
+        <MapMarkerIcon /> {city}, {country}
       </MapMarker>
     </StyledContainer>
   );

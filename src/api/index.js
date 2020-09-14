@@ -1,12 +1,12 @@
-import axios from "axios";
+import apiService from "./apiService";
 
-export const CurrentWeatherApi = async (name) => {
+const apiKey = "0c0b7d1bcc3e964ca6ef54c3aa586a5d";
+
+export const currentWeatherByLatLng = async (lat, lng) => {
   try {
-    const appId = "0c0b7d1bcc3e964ca6ef54c3aa586a5d";
+    const url = `/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${apiKey}&units=metric`;
 
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${name}&appid=${appId}&units=metric`;
-
-    const response = await axios.get(url);
+    const response = await apiService.get(url);
 
     return response.data;
   } catch (error) {
@@ -14,13 +14,35 @@ export const CurrentWeatherApi = async (name) => {
   }
 };
 
-export const ForecastWeatherApi = async (name) => {
+export const forecastWeatherByLatLng = async (lat, lng) => {
   try {
-    const appId = "0c0b7d1bcc3e964ca6ef54c3aa586a5d";
+    const url = `/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=${apiKey}&units=metric`;
 
-    const url = `http://api.openweathermap.org/data/2.5/forecast?q=${name}&appid=${appId}&units=metric`;
+    const response = await apiService.get(url);
 
-    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const currentWeatherByTag = async (name) => {
+  try {
+    const url = `/data/2.5/weather?q=${name}&appid=${apiKey}&units=metric`;
+
+    const response = await apiService.get(url);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const forecastWeatherByTag = async (name) => {
+  try {
+    const url = `/data/2.5/forecast?q=${name}&appid=${apiKey}&units=metric`;
+
+    const response = await apiService.get(url);
 
     return response.data;
   } catch (error) {

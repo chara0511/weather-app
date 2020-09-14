@@ -1,11 +1,10 @@
 import React from "react";
 
 import Main from "./components/Main";
-import Hero from "./components/Hero";
+
 import WeatherState from "./context/weatherState";
 
 import GlobalStyles from "./styles/globalStyles";
-import Details from "./components/Details";
 
 function App() {
   return (
@@ -13,11 +12,7 @@ function App() {
       <GlobalStyles />
 
       <WeatherState>
-        <Main>
-          <Hero />
-
-          <Details />
-        </Main>
+        <Main />
       </WeatherState>
     </>
   );

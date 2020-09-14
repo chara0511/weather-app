@@ -17,13 +17,23 @@ const StyledContainer = styled.div`
 
 const Hero = () => {
   const { current } = useContext(WeatherContext);
+
+  const {
+    main: { temp },
+    sys: { country },
+    name,
+  } = current;
+
   console.log(current);
   return (
     <StyledContainer>
       <Search />
+
       <Animation />
-      <Temperature />
-      <Today />
+
+      <Temperature temp={temp} />
+
+      <Today city={name} country={country} />
     </StyledContainer>
   );
 };

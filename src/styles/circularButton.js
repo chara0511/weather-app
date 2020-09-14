@@ -19,9 +19,9 @@ const StyledCircularBtn = styled.button`
   }
 `;
 
-const CircularButton = ({ nameIcon }) => {
+const CircularButton = ({ nameIcon, currentLocation }) => {
   return (
-    <StyledCircularBtn>
+    <StyledCircularBtn onClick={currentLocation}>
       {/* //FormattedIcon name={nameIcon} */}
       <GpsIcon />
     </StyledCircularBtn>

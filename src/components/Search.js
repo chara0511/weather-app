@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useRef } from "react";
 import styled from "styled-components";
 import CircularButton from "../styles/circularButton";
 import { WeatherContext } from "../context/weatherContext";
@@ -7,6 +7,7 @@ import { theme } from "../styles";
 import CloseIcon from "../icons/closeIcon";
 import ListCities from "./ListCities";
 import SearchIcon from "../icons/searchIcon";
+import { getCurrentLocation } from "../utils/location";
 
 const { colors, shadows, transition } = theme;
 
@@ -106,11 +107,9 @@ const Search = () => {
   const [city, setCity] = useState("");
   const [active, setActive] = useState(false);
 
-  const { getData } = useContext(WeatherContext);
+  const { getDataByTag } = useContext(WeatherContext);
 
-  useEffect(() => {
-    console.log(active);
-  }, [active]);
+  const ref = useRef(null);
 
   const handleInput = (e) => {
     setCity(e.target.value);
@@ -122,7 +121,13 @@ const Search = () => {
     if (city.trim() === "") {
       return;
     }
-    getData(city);
+    getDataByTag(city);
+  };
+
+  const showSearch = () => {
+    setActive(true);
+
+    ref.current.focus();
   };
 
   return (
@@ -140,6 +145,8 @@ const Search = () => {
               type="text"
               placeholder="search location"
               onChange={handleInput}
+              ref={ref}
+              value={city}
             />
 
             <SearchBtn type="submit">Search</SearchBtn>
@@ -152,10 +159,10 @@ const Search = () => {
       <InputClick
         type="text"
         placeholder="Search for places"
-        onClick={() => setActive(true)}
+        onClick={showSearch}
       />
 
-      <CircularButton />
+      <CircularButton currentLocation={getCurrentLocation} />
     </StyledContainer>
   );
 };

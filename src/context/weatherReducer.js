@@ -4,10 +4,10 @@ export const WeatherReducer = (state, action) => {
       return state;
 
     case "CURRENT_WEATHER":
-      return { ...state, current: action.payload };
+      return { ...state, current: action.payload, loading: false };
 
     case "WEATHER_FORECAST":
-      return { ...state, forecast: action.payload };
+      return { ...state, forecast: action.payload, loading: false };
 
     case "CLEAR":
       return state;

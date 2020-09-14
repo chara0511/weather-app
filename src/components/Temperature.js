@@ -26,12 +26,14 @@ const Desc = styled.h3`
   line-height: 42px;
 `;
 
-const Temperature = () => {
+const Temperature = ({ temp }) => {
   return (
-    <StyledContainer className="temperature">
+    <StyledContainer>
       <Temp>
-        15<span>ºc</span>
+        {parseFloat(temp).toFixed(0)}
+        <span>ºc</span>
       </Temp>
+
       <Desc>Shower</Desc>
     </StyledContainer>
   );
