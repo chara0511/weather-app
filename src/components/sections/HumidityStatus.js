@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { theme } from "../../styles";
 
-const { colors, fontSizes } = theme;
+const { colors, fontSizes, transition } = theme;
 
 const SubTitle = styled.h6`
   font-size: ${fontSizes.md};
@@ -25,12 +25,19 @@ const StyledStatus = styled.h2`
 const StyledBar = styled.div`
   border: 1px solid red;
   width: 230px;
-  height: 50px;
+  text-align: right;
 `;
 
-const StyledNum = styled.div`
+const StyledWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+const StyledParams = styled.p`
+  color: ${colors.lightGrey};
+  font-weight: 600;
+  font-size: ${fontSizes.xs};
+  line-height: 14px;
 `;
 
 const StyledBarContent = styled.div`
@@ -39,36 +46,38 @@ const StyledBarContent = styled.div`
   position: relative;
   background-color: ${colors.white};
   border-radius: 8px;
-
-  & div {
-    position: absolute;
-    width: 84%;
-    background-color: #ffec65;
-    height: 8px;
-  }
 `;
 
-const HumidityStatus = () => {
+const StyledResult = styled.div`
+  position: absolute;
+  width: ${(props) => `${props.humidity}%`};
+  background-color: ${colors.barYellow};
+  height: 8px;
+  transition: ${transition};
+`;
+
+const HumidityStatus = ({ humidity }) => {
   return (
     <>
       <SubTitle>Humidity </SubTitle>
 
       <StyledStatus>
-        84<span>%</span>
+        {humidity}
+        <span>%</span>
       </StyledStatus>
 
       <StyledBar>
-        <StyledNum>
-          <p>0</p>
-          <p>50</p>
-          <p>100</p>
-        </StyledNum>
+        <StyledWrapper>
+          <StyledParams>0</StyledParams>
+          <StyledParams>50</StyledParams>
+          <StyledParams>100</StyledParams>
+        </StyledWrapper>
 
         <StyledBarContent>
-          <div></div>
+          <StyledResult humidity={humidity} />
         </StyledBarContent>
 
-        <p>%</p>
+        <StyledParams>%</StyledParams>
       </StyledBar>
     </>
   );

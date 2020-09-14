@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { WeatherContext } from "../context/weatherContext";
 
 import { theme } from "../styles";
+import AirPressureStatus from "./sections/AirPressureStatus";
 import HumidityStatus from "./sections/HumidityStatus";
+import VisibilityStatus from "./sections/VisibilityStatus";
 import WindStatus from "./sections/WindStatus";
 
 const { colors, fontSizes } = theme;
@@ -39,22 +42,30 @@ const StyledContentSmall = styled(StyledContent)`
 `;
 
 const Hightlights = () => {
+  const { forecast } = useContext(WeatherContext);
+
+  console.log(forecast);
+
   return (
     <StyledContainer>
       <Title>Today’s Hightlights</Title>
 
       <StyledHightlights>
         <StyledContent>
-          <WindStatus />
+          <WindStatus windSpeed={forecast?.current.wind_speed} />
         </StyledContent>
 
         <StyledContent>
-          <HumidityStatus />
+          <HumidityStatus humidity={forecast?.current.humidity} />
         </StyledContent>
 
-        <StyledContentSmall>Visibility</StyledContentSmall>
+        <StyledContentSmall>
+          <VisibilityStatus visibility={forecast?.current.visibility} />
+        </StyledContentSmall>
 
-        <StyledContentSmall>Air Pressure</StyledContentSmall>
+        <StyledContentSmall>
+          <AirPressureStatus pressure={forecast?.current.pressure} />
+        </StyledContentSmall>
       </StyledHightlights>
     </StyledContainer>
   );

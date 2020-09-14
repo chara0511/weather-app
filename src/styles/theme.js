@@ -8,6 +8,7 @@ const theme = {
     background: "#1e213a",
     backgroundDetails: "#100E1D",
     buttonBackground: "#3c47e9",
+    barYellow: "#ffec65",
   },
 
   shadows: {

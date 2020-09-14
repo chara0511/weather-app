@@ -16,7 +16,8 @@ export const currentWeatherByLatLng = async (lat, lng) => {
 
 export const forecastWeatherByLatLng = async (lat, lng) => {
   try {
-    const url = `/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=${apiKey}&units=metric`;
+    const url = `/data/2.5/onecall?lat=${lat}&lon=${lng}&
+exclude=minutely,hourly&appid=${apiKey}&units=metric`;
 
     const response = await apiService.get(url);
 
@@ -38,9 +39,10 @@ export const currentWeatherByTag = async (name) => {
   }
 };
 
-export const forecastWeatherByTag = async (name) => {
+export const forecastWeatherByTag = async (lat, lng) => {
   try {
-    const url = `/data/2.5/forecast?q=${name}&appid=${apiKey}&units=metric`;
+    const url = `/data/2.5/onecall?lat=${lat}&lon=${lng}&
+exclude=minutely,hourly&appid=${apiKey}&units=metric`;
 
     const response = await apiService.get(url);
 

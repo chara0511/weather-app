@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import styled from "styled-components";
+import { WeatherContext } from "../context/weatherContext";
 
 import image from "../images/Shower.png";
 
 import { theme } from "../styles";
+import { getFahrenheitValue } from "../utils";
 const { colors, fontSizes } = theme;
 
 const StyledContainer = styled.div`
@@ -35,6 +37,7 @@ const StyledTemp = styled.div`
   & p {
     line-height: 19px;
     font-weight: 500;
+    text-transform: uppercase;
 
     &:nth-of-type(1) {
       color: ${colors.white};
@@ -42,14 +45,33 @@ const StyledTemp = styled.div`
   }
 `;
 
-const Day = ({ data }) => {
+const Day = ({ daily }) => {
+  const { fahrenheit } = useContext(WeatherContext);
+
+  const valueMax = fahrenheit
+    ? getFahrenheitValue(daily.temp.max)
+    : daily.temp.max;
+
+  const valueMin = fahrenheit
+    ? getFahrenheitValue(daily.temp.min)
+    : daily.temp.min;
+
   return (
     <StyledContainer>
-      <StyledDay>{data.date}</StyledDay>
+      <StyledDay>day</StyledDay>
+
       <img src={image} alt="shower" />
+
       <StyledTemp>
-        <p>{data.temp_max}ºC</p>
-        <p>{data.temp_min}ºC</p>
+        <p>
+          {parseFloat(valueMax).toFixed(0)}
+          {fahrenheit ? "ºf" : "ºc"}
+        </p>
+
+        <p>
+          {parseFloat(valueMin).toFixed(0)}
+          {fahrenheit ? "ºf" : "ºc"}
+        </p>
       </StyledTemp>
     </StyledContainer>
   );

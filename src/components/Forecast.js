@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import Day from "./Day";
 
 import styled from "styled-components";
+import { WeatherContext } from "../context/weatherContext";
 
 const StyledContainer = styled.div`
   display: grid;
@@ -11,18 +12,12 @@ const StyledContainer = styled.div`
   padding: 52px 54px;
 `;
 const Forecast = () => {
-  const forecast = [
-    { date: "Tomorrow", temp_max: 16, temp_min: 11 },
-    { date: "Sun, 7 Jun", temp_max: 16, temp_min: 11 },
-    { date: "Mon, 8 Jun", temp_max: 16, temp_min: 11 },
-    { date: "Tue, 9 Jun", temp_max: 16, temp_min: 11 },
-    { date: "Wed, 10 Jun", temp_max: 16, temp_min: 11 },
-  ];
+  const { forecast } = useContext(WeatherContext);
 
   return (
     <StyledContainer>
-      {forecast.map((day, i) => (
-        <Day key={i} data={day} />
+      {forecast?.daily.map((daily, i) => (
+        <Day key={i} daily={daily} />
       ))}
     </StyledContainer>
   );

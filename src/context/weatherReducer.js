@@ -4,37 +4,50 @@ export const WeatherReducer = (state, action) => {
       return state;
 
     case "CURRENT_WEATHER":
-      return { ...state, current: action.payload, loading: false };
+      return {
+        ...state,
+        current: action.payload,
+        loading: false,
+        celsius: true,
+      };
 
     case "WEATHER_FORECAST":
-      return { ...state, forecast: action.payload, loading: false };
+      return {
+        ...state,
+        forecast: action.payload,
+        loading: false,
+        celsius: true,
+      };
 
-    case "CLEAR":
-      return state;
+    case "ERROR":
+      return { ...state, error: action.payload };
 
-    case "HAIL":
-      return state;
+    // case "CLEAR":
+    //   return state;
 
-    case "HEAVYCLOUD":
-      return state;
+    // case "HAIL":
+    //   return state;
 
-    case "HEAVYRAIN":
-      return state;
+    // case "HEAVYCLOUD":
+    //   return state;
 
-    case "LIGHTCLOUD":
-      return state;
+    // case "HEAVYRAIN":
+    //   return state;
 
-    case "LIGHTRAIN":
-      return state;
+    // case "LIGHTCLOUD":
+    //   return state;
 
-    case "SLEET":
-      return state;
+    // case "LIGHTRAIN":
+    //   return state;
 
-    case "SNOW":
-      return state;
+    // case "SLEET":
+    //   return state;
 
-    case "THUNDERSTORM":
-      return state;
+    // case "SNOW":
+    //   return state;
+
+    // case "THUNDERSTORM":
+    //   return state;
 
     default:
       return state;

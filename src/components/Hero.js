@@ -24,7 +24,6 @@ const Hero = () => {
     name,
   } = current;
 
-  console.log(current);
   return (
     <StyledContainer>
       <Search />

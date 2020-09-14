@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { WeatherContext } from "../context/weatherContext";
 import { theme } from "../styles";
+import { getFahrenheitValue } from "../utils";
 
 const { fontSizes } = theme;
 
@@ -27,11 +29,16 @@ const Desc = styled.h3`
 `;
 
 const Temperature = ({ temp }) => {
+  const { fahrenheit } = useContext(WeatherContext);
+
+  const value = fahrenheit ? getFahrenheitValue(temp) : temp;
+
   return (
     <StyledContainer>
       <Temp>
-        {parseFloat(temp).toFixed(0)}
-        <span>ºc</span>
+        {parseFloat(value).toFixed(0)}
+
+        <span>{fahrenheit ? "ºf" : "ºc"}</span>
       </Temp>
 
       <Desc>Shower</Desc>
