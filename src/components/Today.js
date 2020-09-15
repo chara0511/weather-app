@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { theme } from "../styles";
 import MapMarkerIcon from "../icons/mapMarkerIcon";
+import { getNow } from "../utils/date";
 
 const { fontSizes } = theme;
 
@@ -28,7 +29,7 @@ const MapMarker = styled(DateNow)`
 `;
 
 const Today = ({ city, country }) => {
-  const today = Date();
+  const today = getNow();
   return (
     <StyledContainer>
       <DateNow>Today · {today}</DateNow>

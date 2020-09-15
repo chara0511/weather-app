@@ -3,6 +3,7 @@ import Day from "./Day";
 
 import styled from "styled-components";
 import { WeatherContext } from "../context/weatherContext";
+import { getListDays } from "../utils/date";
 
 const StyledContainer = styled.div`
   display: grid;
@@ -13,11 +14,11 @@ const StyledContainer = styled.div`
 `;
 const Forecast = () => {
   const { forecast } = useContext(WeatherContext);
-
+  const day = getListDays();
   return (
     <StyledContainer>
       {forecast?.daily.map((daily, i) => (
-        <Day key={i} daily={daily} />
+        <Day key={i} daily={daily} day={day[i]} />
       ))}
     </StyledContainer>
   );

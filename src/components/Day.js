@@ -45,7 +45,7 @@ const StyledTemp = styled.div`
   }
 `;
 
-const Day = ({ daily }) => {
+const Day = ({ daily, day }) => {
   const { fahrenheit } = useContext(WeatherContext);
 
   const valueMax = fahrenheit
@@ -58,7 +58,7 @@ const Day = ({ daily }) => {
 
   return (
     <StyledContainer>
-      <StyledDay>day</StyledDay>
+      <StyledDay>{day}</StyledDay>
 
       <img src={image} alt="shower" />
 

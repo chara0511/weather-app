@@ -3,7 +3,16 @@ import City from "./City";
 
 const ListCities = () => {
   // set a scrollY
-  const cities = ["London", "Barcelona", "Long Beach"];
+  const cities = [
+    "London",
+    "Barcelona",
+    "Long Beach",
+    "Long Beach",
+    "Long Beach",
+    "Long Beach",
+    "Long Beach",
+    "Long Beach",
+  ];
 
   return (
     <ul>

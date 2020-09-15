@@ -32,7 +32,7 @@ const StyledNav = styled.div`
   transform: translateX(${(props) => (props.active ? `0px` : `-460px`)});
 `;
 
-const Wrapper = styled.div`
+const StyledWrapper = styled.div`
   border: 1px solid red;
   height: 90vh;
   margin: 11px; /* 11px 42px in 1440px */
@@ -52,7 +52,7 @@ const CloseBtn = styled.button`
   }
 `;
 
-const Form = styled.form`
+const StyledForm = styled.form`
   display: flex;
   gap: 0.5em;
   justify-content: space-between;
@@ -103,6 +103,42 @@ const SearchBtn = styled.button`
   line-height: 19px;
 `;
 
+const StyledList = styled.div`
+  border: 1px solid green;
+  overflow: auto;
+  height: 65vh;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${colors.grey};
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    &:hover,
+    &:active {
+      background-color: ${colors.grayish};
+      box-shadow: ${shadows.scroll};
+    }
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: ${colors.white};
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    &:hover,
+    &:active {
+      background: ${colors.lightGrey};
+    }
+  }
+`;
+
 const Search = () => {
   const [city, setCity] = useState("");
   const [active, setActive] = useState(false);
@@ -133,12 +169,12 @@ const Search = () => {
   return (
     <StyledContainer>
       <StyledNav active={active}>
-        <Wrapper>
+        <StyledWrapper>
           <CloseBtn onClick={() => setActive(false)}>
             <CloseIcon />
           </CloseBtn>
 
-          <Form onSubmit={handleSubmit}>
+          <StyledForm onSubmit={handleSubmit}>
             <SearchIcon />
 
             <InputSearch
@@ -150,10 +186,12 @@ const Search = () => {
             />
 
             <SearchBtn type="submit">Search</SearchBtn>
-          </Form>
+          </StyledForm>
 
-          <ListCities />
-        </Wrapper>
+          <StyledList>
+            <ListCities />
+          </StyledList>
+        </StyledWrapper>
       </StyledNav>
 
       <InputClick

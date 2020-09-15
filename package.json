@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.20.0",
     "cra-template": "1.0.3",
+    "dayjs": "^1.8.35",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
