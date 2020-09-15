@@ -7,12 +7,21 @@ import Temperature from "./Temperature";
 import Today from "./Today";
 import styled from "styled-components";
 import Search from "./Search";
+import media from "../styles/media";
+import { theme } from "../styles";
+
+const { colors } = theme;
 
 const StyledContainer = styled.div`
   border: 1px solid red;
   margin: 0;
-  max-width: 460px;
+  width: 100%;
   min-height: 100vh;
+  background-color: ${colors.background};
+
+  ${media.mdDesktop`
+    max-width: 460px;
+  `}
 `;
 
 const Hero = () => {

@@ -14,6 +14,7 @@ const StyledContainer = styled.div`
 `;
 const Forecast = () => {
   const { forecast } = useContext(WeatherContext);
+
   const day = getListDays();
   return (
     <StyledContainer>

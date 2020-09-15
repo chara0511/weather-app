@@ -8,6 +8,7 @@ import CloseIcon from "../icons/closeIcon";
 import ListCities from "./ListCities";
 import SearchIcon from "../icons/searchIcon";
 import { getCurrentLocation } from "../utils/location";
+import media from "../styles/media";
 
 const { colors, shadows, transition } = theme;
 
@@ -15,8 +16,12 @@ const StyledContainer = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
-  max-width: 460px;
   padding: 18px 11px 0 11px;
+
+  ${media.lgDesktop`
+    padding: 42px 46px 0 42px;
+    width: 460px;
+  `}
 `;
 
 const StyledNav = styled.div`
@@ -35,8 +40,12 @@ const StyledNav = styled.div`
 const StyledWrapper = styled.div`
   border: 1px solid red;
   height: 90vh;
-  margin: 11px; /* 11px 42px in 1440px */
+  margin: 11px;
   position: relative;
+
+  ${media.lgDesktop`
+    margin: 42px 46px 0 42px;
+  `}
 `;
 
 const CloseBtn = styled.button`
@@ -93,6 +102,10 @@ const InputSearch = styled(InputClick)`
   &::placeholder {
     color: ${colors.grayish};
   }
+
+  ${media.lgDesktop`
+    max-width: 268px;
+  `}
 `;
 
 const SearchBtn = styled.button`

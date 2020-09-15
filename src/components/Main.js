@@ -1,22 +1,24 @@
 import React, { useContext, useEffect } from "react";
 import Hero from "./Hero";
 import Details from "./Details";
+import { getCurrentLocation } from "../utils/location";
 
 import styled from "styled-components";
 
-import { theme } from "../styles";
 import { WeatherContext } from "../context/weatherContext";
-import { getCurrentLocation } from "../utils/location";
-
-const { colors } = theme;
+import media from "../styles/media";
 
 const StyledContainer = styled.div`
   max-width: 100%; /* 459px in 1440px */
-  background-color: ${colors.background};
+  overflow: auto;
+
+  ${media.mdDesktop`
+    display:flex;
+  `}
 `;
 
 const Main = () => {
-  const { getDataByLatLng, loading } = useContext(WeatherContext);
+  const { loading, getDataByLatLng } = useContext(WeatherContext); //getDataByLatLng,
 
   useEffect(() => {
     getCurrentLocation().then(({ lat, lng }) => getDataByLatLng(lat, lng));
