@@ -30,13 +30,9 @@ const WeatherState = ({ children }) => {
 
     const forecast = await forecastWeatherByTag(lat, lng);
 
-    try {
-      dispatch({ type: CURRENT_WEATHER, payload: current });
+    dispatch({ type: CURRENT_WEATHER, payload: current });
 
-      dispatch({ type: WEATHER_FORECAST, payload: forecast });
-    } catch (error) {
-      dispatch({ type: ERROR, payload: error });
-    }
+    dispatch({ type: WEATHER_FORECAST, payload: forecast });
   };
 
   const getDataByLatLng = async (lat, lng) => {
@@ -49,6 +45,10 @@ const WeatherState = ({ children }) => {
     dispatch({ type: WEATHER_FORECAST, payload: forecast });
   };
 
+  const showError = (error) => {
+    dispatch({ type: ERROR, payload: error.message });
+  };
+
   return (
     <WeatherContext.Provider
       value={{
@@ -59,6 +59,7 @@ const WeatherState = ({ children }) => {
         fahrenheit: state.fahrenheit,
         getDataByTag,
         getDataByLatLng,
+        showError,
       }}
     >
       {children}

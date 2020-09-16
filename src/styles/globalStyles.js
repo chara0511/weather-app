@@ -32,10 +32,6 @@ const GlobalStyles = createGlobalStyle`
     font-size: ${fontSizes.lg};
   }
 
-  /* ::selection {
-    background-color: ${colors.highlight};
-  } */
-
   h1,
   h2,
   h3,
@@ -140,7 +136,6 @@ const GlobalStyles = createGlobalStyle`
     li {
       margin-bottom: 12px;
       position: relative;
-      padding: 22px 12px;
     }
   }
 

@@ -5,12 +5,13 @@ import NextIcon from "../icons/nextIcon";
 
 const { colors } = theme;
 
-const StyledContainer = styled.li`
+const StyledContainer = styled.div`
   align-items: center;
   border: 1px solid ${colors.background};
   cursor: pointer;
   display: flex;
   justify-content: space-between;
+  padding: 22px 12px;
 
   &:hover {
     border: 1px solid ${colors.grayish};
@@ -23,9 +24,9 @@ const StyledContainer = styled.li`
   }
 `;
 
-const City = ({ name }) => {
+const City = ({ name, hideSearch }) => {
   return (
-    <StyledContainer>
+    <StyledContainer onClick={hideSearch}>
       {name}
       <NextIcon />
     </StyledContainer>

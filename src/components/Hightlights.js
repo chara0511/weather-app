@@ -59,8 +59,6 @@ const StyledContentSmall = styled(StyledContent)`
 const Hightlights = () => {
   const { forecast } = useContext(WeatherContext);
 
-  console.log(forecast);
-
   return (
     <StyledContainer>
       <Title>Today’s Hightlights</Title>

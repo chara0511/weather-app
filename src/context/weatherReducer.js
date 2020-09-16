@@ -20,7 +20,7 @@ export const WeatherReducer = (state, action) => {
       };
 
     case "ERROR":
-      return { ...state, error: action.payload };
+      return { ...state, error: { message: action.payload } }; //celsius:false?
 
     // case "CLEAR":
     //   return state;

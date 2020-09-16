@@ -1,14 +1,15 @@
 import React, { useState, useContext, useRef } from "react";
-import styled from "styled-components";
-import CircularButton from "../styles/circularButton";
 import { WeatherContext } from "../context/weatherContext";
 
-import { theme } from "../styles";
-import CloseIcon from "../icons/closeIcon";
 import ListCities from "./ListCities";
-import SearchIcon from "../icons/searchIcon";
 import { getCurrentLocation } from "../utils/location";
+import SearchIcon from "../icons/searchIcon";
+import CloseIcon from "../icons/closeIcon";
+
+import styled from "styled-components";
+import CircularButton from "../styles/circularButton";
 import media from "../styles/media";
+import { theme } from "../styles";
 
 const { colors, shadows, transition } = theme;
 
@@ -153,24 +154,43 @@ const StyledList = styled.div`
 `;
 
 const Search = () => {
-  const [city, setCity] = useState("");
+  const [state, setState] = useState({
+    city: "",
+    cities: [
+      { id: "a1b1c1", name: "London" },
+      { id: "a1b1c12", name: "Miami" },
+    ],
+  });
+
   const [active, setActive] = useState(false);
 
   const { getDataByTag } = useContext(WeatherContext);
 
   const ref = useRef(null);
 
-  const handleInput = (e) => {
-    setCity(e.target.value);
+  const handleChange = (e) => {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (city.trim() === "") {
+    if (state.city.trim() === "") {
       return;
     }
-    getDataByTag(city);
+
+    getDataByTag(state.city);
+
+    setState((prev) => ({
+      cities: [
+        { id: state.cities[1].id + 1, name: state.city },
+        ...prev.cities,
+      ],
+      city: "",
+    }));
   };
 
   const showSearch = () => {
@@ -179,11 +199,15 @@ const Search = () => {
     ref.current.focus();
   };
 
+  const hideSearch = () => {
+    setActive(false);
+  };
+
   return (
     <StyledContainer>
       <StyledNav active={active}>
         <StyledWrapper>
-          <CloseBtn onClick={() => setActive(false)}>
+          <CloseBtn onClick={hideSearch}>
             <CloseIcon />
           </CloseBtn>
 
@@ -193,16 +217,17 @@ const Search = () => {
             <InputSearch
               type="text"
               placeholder="search location"
-              onChange={handleInput}
+              onChange={handleChange}
               ref={ref}
-              value={city}
+              name="city"
+              value={state.city}
             />
 
             <SearchBtn type="submit">Search</SearchBtn>
           </StyledForm>
 
           <StyledList>
-            <ListCities />
+            <ListCities cities={state.cities} hideSearch={hideSearch} />
           </StyledList>
         </StyledWrapper>
       </StyledNav>

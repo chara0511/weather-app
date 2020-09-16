@@ -18,7 +18,7 @@ const StyledContainer = styled.div`
 `;
 
 const Main = () => {
-  const { loading, getDataByLatLng } = useContext(WeatherContext); //getDataByLatLng,
+  const { loading, getDataByLatLng } = useContext(WeatherContext); //
 
   useEffect(() => {
     getCurrentLocation().then(({ lat, lng }) => getDataByLatLng(lat, lng));
@@ -27,7 +27,7 @@ const Main = () => {
 
   return (
     <StyledContainer>
-      {!loading ? ( //!loading
+      {!loading ? (
         <>
           <Hero />
 

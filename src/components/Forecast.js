@@ -4,6 +4,7 @@ import Day from "./Day";
 import styled from "styled-components";
 import { WeatherContext } from "../context/weatherContext";
 import { getListDays } from "../utils/date";
+import media from "../styles/media";
 
 const StyledContainer = styled.div`
   display: grid;
@@ -11,6 +12,14 @@ const StyledContainer = styled.div`
   row-gap: 32px;
   column-gap: 26px;
   padding: 52px 54px;
+
+  ${media.smDesktop`
+    grid-template-columns: 1fr 1fr 1fr;
+  `}
+
+  ${media.mdDesktop`
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  `}
 `;
 const Forecast = () => {
   const { forecast } = useContext(WeatherContext);
