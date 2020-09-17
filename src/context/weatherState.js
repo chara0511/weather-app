@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
-import { WeatherReducer } from "./weatherReducer";
 import { WeatherContext } from "./weatherContext";
+import { WeatherReducer } from "./weatherReducer";
 
 import { CURRENT_WEATHER, WEATHER_FORECAST, ERROR } from "../types";
 import {
@@ -15,7 +15,7 @@ const WeatherState = ({ children }) => {
     current: null,
     forecast: null,
     loading: true,
-    error: null,
+    errors: { error: null, errorInfo: null },
     celsius: null,
     fahrenheit: null,
   };
@@ -23,30 +23,38 @@ const WeatherState = ({ children }) => {
   const [state, dispatch] = useReducer(WeatherReducer, initialState);
 
   const getDataByTag = async (name) => {
-    const current = await currentWeatherByTag(name);
+    try {
+      const current = await currentWeatherByTag(name);
 
-    const lat = current?.coord.lat;
-    const lng = current?.coord.lon;
+      const lat = current?.coord.lat;
+      const lng = current?.coord.lon;
 
-    const forecast = await forecastWeatherByTag(lat, lng);
+      const forecast = await forecastWeatherByTag(lat, lng);
 
-    dispatch({ type: CURRENT_WEATHER, payload: current });
+      dispatch({ type: CURRENT_WEATHER, payload: current });
 
-    dispatch({ type: WEATHER_FORECAST, payload: forecast });
+      dispatch({ type: WEATHER_FORECAST, payload: forecast });
+    } catch (error) {
+      showError(error.response.statusText);
+    }
   };
 
   const getDataByLatLng = async (lat, lng) => {
-    const current = await currentWeatherByLatLng(lat, lng);
+    try {
+      const current = await currentWeatherByLatLng(lat, lng);
 
-    const forecast = await forecastWeatherByLatLng(lat, lng);
+      const forecast = await forecastWeatherByLatLng(lat, lng);
 
-    dispatch({ type: CURRENT_WEATHER, payload: current });
+      dispatch({ type: CURRENT_WEATHER, payload: current });
 
-    dispatch({ type: WEATHER_FORECAST, payload: forecast });
+      dispatch({ type: WEATHER_FORECAST, payload: forecast });
+    } catch (error) {
+      showError(error.response.statusText);
+    }
   };
 
   const showError = (error) => {
-    dispatch({ type: ERROR, payload: error.message });
+    dispatch({ type: ERROR, payload: error });
   };
 
   return (
@@ -57,6 +65,7 @@ const WeatherState = ({ children }) => {
         loading: state.loading,
         celsius: state.celsius,
         fahrenheit: state.fahrenheit,
+        errors: state.errors,
         getDataByTag,
         getDataByLatLng,
         showError,

@@ -9,15 +9,16 @@ import styled from "styled-components";
 import Search from "./Search";
 import media from "../styles/media";
 import { theme } from "../styles";
+import ErrorPage from "./ErrorPage";
 
 const { colors } = theme;
 
 const StyledContainer = styled.div`
+  background-color: ${colors.background};
   border: 1px solid red;
   margin: 0;
-  width: 100%;
   min-height: 100vh;
-  background-color: ${colors.background};
+  width: 100%;
 
   ${media.mdDesktop`
     max-width: 460px;
@@ -25,23 +26,24 @@ const StyledContainer = styled.div`
 `;
 
 const Hero = () => {
-  const { current } = useContext(WeatherContext);
-
-  const {
-    main: { temp },
-    sys: { country },
-    name,
-  } = current;
+  const { current, errors } = useContext(WeatherContext);
 
   return (
     <StyledContainer>
-      <Search />
+      {errors?.errorInfo === "Unauthorized" ||
+      errors?.errorInfo === "User denied Geolocation" ? (
+        <ErrorPage message={errors.errorInfo} />
+      ) : (
+        <>
+          <Search />
 
-      <Animation />
+          <Animation />
 
-      <Temperature temp={temp} />
+          <Temperature temp={current.main.temp} />
 
-      <Today city={name} country={country} />
+          <Today city={current.name} country={current.sys.country} />
+        </>
+      )}
     </StyledContainer>
   );
 };

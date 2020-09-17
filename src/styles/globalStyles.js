@@ -25,7 +25,7 @@ const GlobalStyles = createGlobalStyle`
     overflow-x: hidden;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background-color: ${colors.navy};
+    background-color: ${colors.background};
     color: ${colors.white};
     line-height: 1.3;
     font-family: ${fonts.Raleway};

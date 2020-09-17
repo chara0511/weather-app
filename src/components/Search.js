@@ -1,5 +1,4 @@
-import React, { useState, useContext, useRef } from "react";
-import { WeatherContext } from "../context/weatherContext";
+import React, { useState, useRef } from "react";
 
 import ListCities from "./ListCities";
 import { getCurrentLocation } from "../utils/location";
@@ -156,15 +155,10 @@ const StyledList = styled.div`
 const Search = () => {
   const [state, setState] = useState({
     city: "",
-    cities: [
-      { id: "a1b1c1", name: "London" },
-      { id: "a1b1c12", name: "Miami" },
-    ],
+    cities: [{ id: "a1b1c1", name: "London" }],
   });
 
   const [active, setActive] = useState(false);
-
-  const { getDataByTag } = useContext(WeatherContext);
 
   const ref = useRef(null);
 
@@ -182,14 +176,12 @@ const Search = () => {
       return;
     }
 
-    getDataByTag(state.city);
-
     setState((prev) => ({
+      city: "",
       cities: [
-        { id: state.cities[1].id + 1, name: state.city },
+        { id: state.cities[0].id + 1, name: state.city },
         ...prev.cities,
       ],
-      city: "",
     }));
   };
 
