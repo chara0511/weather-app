@@ -12,25 +12,19 @@ import { theme } from "../styles";
 
 const { colors, fontSizes } = theme;
 
-const StyledContainer = styled.div`
-  padding: 0px 24px;
-
-  ${media.lgDesktop`
-    padding: 0px 150px;
-  `}
-`;
-
 const Title = styled.h4`
   font-size: ${fontSizes.xl};
+  padding: 32px 0;
 `;
 
-const StyledHightlights = styled.div`
+const StyledContainer = styled.div`
   display: grid;
   row-gap: 32px;
   padding: 1.25em 0;
 
   ${media.smDesktop`
     grid-template-columns: 1fr 1fr;  
+    column-gap: 36px;
   `}
 
   ${media.lgDesktop`
@@ -47,8 +41,8 @@ const StyledContent = styled.div`
   font-size: ${fontSizes.md};
   justify-content: space-between;
   height: 204px;
-  width: 328px;
   padding: 22px 0;
+  width: 328px;
   margin: auto;
 `;
 
@@ -60,10 +54,10 @@ const Hightlights = () => {
   const { forecast } = useContext(WeatherContext);
 
   return (
-    <StyledContainer>
+    <>
       <Title>Today’s Hightlights</Title>
 
-      <StyledHightlights>
+      <StyledContainer>
         <StyledContent>
           <WindStatus windSpeed={forecast?.current.wind_speed} />
         </StyledContent>
@@ -79,8 +73,8 @@ const Hightlights = () => {
         <StyledContentSmall>
           <AirPressureStatus pressure={forecast?.current.pressure} />
         </StyledContentSmall>
-      </StyledHightlights>
-    </StyledContainer>
+      </StyledContainer>
+    </>
   );
 };
 

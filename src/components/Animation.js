@@ -2,16 +2,22 @@ import React from "react";
 import styled from "styled-components";
 import weather from "../images/Shower.png";
 import clouds from "../images/Cloud-background.png";
+import media from "../styles/media";
 
 const StyledContainer = styled.div`
   border: 1px solid green;
   background-image: url(${clouds});
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 564px; /* 650px in 1440px */
-  height: 326px; /* 376px in 1440px */
+  background-size: 564px;
+  height: 326px;
   position: relative;
   width: 100%;
+
+  ${media.smDesktop`
+    background-size: 650px;
+    height: 376px;
+  `}
 `;
 
 const StyledImage = styled.img`
@@ -24,6 +30,11 @@ const StyledImage = styled.img`
   right: 0;
   top: 0;
   width: 150px;
+
+  ${media.smDesktop`
+    height: 234px;
+    width: 202px;
+  `}
 `;
 
 const Animation = () => {

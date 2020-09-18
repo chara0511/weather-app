@@ -26,9 +26,10 @@ const Temp = styled.h1`
 const Desc = styled.h3`
   font-size: ${fontSizes.h3};
   line-height: 42px;
+  text-transform: capitalize;
 `;
 
-const Temperature = ({ temp }) => {
+const Temperature = ({ temp, desc }) => {
   const { fahrenheit } = useContext(WeatherContext);
 
   const value = fahrenheit ? getFahrenheitValue(temp) : temp;
@@ -41,7 +42,7 @@ const Temperature = ({ temp }) => {
         <span>{fahrenheit ? "ºf" : "ºc"}</span>
       </Temp>
 
-      <Desc>Shower</Desc>
+      <Desc>{desc}</Desc>
     </StyledContainer>
   );
 };

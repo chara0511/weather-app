@@ -19,9 +19,14 @@ const StyledContainer = styled.div`
   margin: 0;
   min-height: 100vh;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: relative;
 
   ${media.mdDesktop`
     max-width: 460px;
+    position: fixed;
   `}
 `;
 
@@ -39,9 +44,12 @@ const Hero = () => {
 
           <Animation />
 
-          <Temperature temp={current.main.temp} />
+          <Temperature
+            temp={current?.main.temp}
+            desc={current?.weather[0].description}
+          />
 
-          <Today city={current.name} country={current.sys.country} />
+          <Today city={current?.name} country={current?.sys.country} />
         </>
       )}
     </StyledContainer>

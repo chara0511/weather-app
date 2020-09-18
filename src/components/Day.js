@@ -10,18 +10,19 @@ import { getFahrenheitValue } from "../utils";
 const { colors, fontSizes } = theme;
 
 const StyledContainer = styled.div`
-  max-width: 120px;
-  height: 177px;
-  background-color: ${colors.background};
   align-items: center;
-  padding: 18px 0;
+  background-color: ${colors.background};
   display: flex;
   flex-direction: column;
+  height: 177px;
+  padding: 18px 12px;
   justify-content: space-between;
+  margin: auto;
+  width: 120px;
 
   & img {
-    width: 56px;
     height: 62px;
+    width: 56px;
   }
 `;
 const StyledDay = styled.h6`
@@ -32,7 +33,7 @@ const StyledDay = styled.h6`
 const StyledTemp = styled.div`
   display: flex;
   justify-content: space-between;
-  column-gap: 12px;
+  width: 100%;
 
   & p {
     line-height: 19px;

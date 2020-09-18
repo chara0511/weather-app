@@ -91,7 +91,7 @@ const GlobalStyles = createGlobalStyle`
 
     &:focus,
     &:active {
-      outline-color: ${colors.blue};
+      outline-color: ${colors.white};
     }
   }
 

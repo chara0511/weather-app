@@ -1,22 +1,29 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 
 import ListCities from "./ListCities";
 import { getCurrentLocation } from "../utils/location";
 import SearchIcon from "../icons/searchIcon";
 import CloseIcon from "../icons/closeIcon";
 
+import { v4 as uuidv4 } from "uuid";
+
 import styled from "styled-components";
 import CircularButton from "../styles/circularButton";
 import media from "../styles/media";
 import { theme } from "../styles";
+import ScrollY from "../styles/scrollY";
+import { WeatherContext } from "../context/weatherContext";
 
 const { colors, shadows, transition } = theme;
 
 const StyledContainer = styled.div`
-  align-items: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   padding: 18px 11px 0 11px;
+  z-index: 1;
 
   ${media.lgDesktop`
     padding: 42px 46px 0 42px;
@@ -48,7 +55,7 @@ const StyledWrapper = styled.div`
   `}
 `;
 
-const CloseBtn = styled.button`
+const StyledCloseBtn = styled.button`
   background: transparent;
   padding: 0;
   position: absolute;
@@ -77,23 +84,19 @@ const StyledForm = styled.form`
   }
 `;
 
-const InputClick = styled.input`
+const StyledSearchBtn = styled.button`
+  color: ${colors.white};
   height: 40px;
-  width: 165px;
   box-shadow: ${shadows.input};
   background-color: ${colors.inputBg};
   padding: 0 16px;
-  color: ${colors.white};
-
-  &::placeholder {
-    color: ${colors.white};
-  }
+  width: 165px;
 `;
 
-const InputSearch = styled(InputClick)`
+const StyledSearchInput = styled.input`
   background-color: transparent;
   border: 1px solid ${colors.white};
-  box-shadow: none;
+  color: ${colors.white};
   height: 48px;
   max-width: 252px;
   padding-left: 50px;
@@ -108,7 +111,7 @@ const InputSearch = styled(InputClick)`
   `}
 `;
 
-const SearchBtn = styled.button`
+const StyledSubmit = styled.button`
   background-color: ${colors.buttonBackground};
   color: ${colors.white};
   height: 48px;
@@ -116,46 +119,12 @@ const SearchBtn = styled.button`
   line-height: 19px;
 `;
 
-const StyledList = styled.div`
-  border: 1px solid green;
-  overflow: auto;
-  height: 65vh;
-
-  &::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: ${colors.grey};
-    border-radius: 4px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    &:hover,
-    &:active {
-      background-color: ${colors.grayish};
-      box-shadow: ${shadows.scroll};
-    }
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: ${colors.white};
-    border-radius: 4px;
-  }
-
-  &::-webkit-scrollbar-track {
-    &:hover,
-    &:active {
-      background: ${colors.lightGrey};
-    }
-  }
-`;
-
 const Search = () => {
+  const { getDataByLatLng, showError } = useContext(WeatherContext);
+
   const [state, setState] = useState({
     city: "",
-    cities: [{ id: "a1b1c1", name: "London" }],
+    cities: [{ id: uuidv4(), name: "London" }],
   });
 
   const [active, setActive] = useState(false);
@@ -178,10 +147,7 @@ const Search = () => {
 
     setState((prev) => ({
       city: "",
-      cities: [
-        { id: state.cities[0].id + 1, name: state.city },
-        ...prev.cities,
-      ],
+      cities: [{ id: uuidv4(), name: state.city }, ...prev.cities],
     }));
   };
 
@@ -195,18 +161,24 @@ const Search = () => {
     setActive(false);
   };
 
+  const currentLocation = () => {
+    getCurrentLocation()
+      .then(({ lat, lng }) => getDataByLatLng(lat, lng))
+      .catch((error) => showError(error.message));
+  };
+
   return (
     <StyledContainer>
       <StyledNav active={active}>
         <StyledWrapper>
-          <CloseBtn onClick={hideSearch}>
+          <StyledCloseBtn onClick={hideSearch}>
             <CloseIcon />
-          </CloseBtn>
+          </StyledCloseBtn>
 
           <StyledForm onSubmit={handleSubmit}>
             <SearchIcon />
 
-            <InputSearch
+            <StyledSearchInput
               type="text"
               placeholder="search location"
               onChange={handleChange}
@@ -215,22 +187,18 @@ const Search = () => {
               value={state.city}
             />
 
-            <SearchBtn type="submit">Search</SearchBtn>
+            <StyledSubmit type="submit">Search</StyledSubmit>
           </StyledForm>
 
-          <StyledList>
+          <ScrollY withHeight="65vh">
             <ListCities cities={state.cities} hideSearch={hideSearch} />
-          </StyledList>
+          </ScrollY>
         </StyledWrapper>
       </StyledNav>
 
-      <InputClick
-        type="text"
-        placeholder="Search for places"
-        onClick={showSearch}
-      />
+      <StyledSearchBtn onClick={showSearch}>Search for places</StyledSearchBtn>
 
-      <CircularButton currentLocation={getCurrentLocation} />
+      <CircularButton currentLocation={currentLocation} />
     </StyledContainer>
   );
 };
