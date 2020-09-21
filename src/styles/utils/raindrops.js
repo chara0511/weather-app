@@ -1,53 +1,60 @@
-import styled from "styled-components";
+import React from "react";
+import styled, { keyframes } from "styled-components";
 
-const Raindrops = styled.div`
-  .raindrop {
-    width: 6px;
-    background: #a3d9f1;
-    transform: rotate(15deg);
-    z-index: 6;
-    border-radius: 5px;
-  }
-
-  .raindrop {
-    position: absolute;
-
-    &:nth-of-type(1) {
-      top: 110px;
-      left: 20px;
-      height: 36px;
-    }
-
-    &:nth-of-type(2) {
-      top: 110px;
-      left: 35px;
-      height: 48px;
-    }
-
-    &:nth-of-type(3) {
-      top: 110px;
-      left: 50px;
-      height: 60px;
-    }
-
-    &:nth-of-type(4) {
-      top: 110px;
-      right: 43px;
-      height: 36px;
-    }
-
-    &:nth-of-type(5) {
-      top: 110px;
-      right: 30px;
-      height: 48px;
-    }
-
-    &:nth-of-type(6) {
-      top: 110px;
-      right: 12px;
-      height: 24px;
-    }
+const animation = keyframes`
+  0% { top: 0px; }
+  100% {
+    top: 100px;
   }
 `;
+
+const StyledRaindrops = styled.div`
+  & .drops {
+    position: relative;
+    transition: visibility 0.5s, opacity 0.5s, background-color 0.5s, width 0.5s,
+      animation-duration 1s;
+    /* z-index: 5; */
+    animation: ${animation} 0.5s ease-in infinite;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  & .rain {
+    width: 1px;
+    height: 10px;
+    background-color: white;
+    border-radius: 25%;
+  }
+  & #d1 {
+    transform: translate(-45px, -2px);
+    animation-delay: 1.5s;
+  }
+
+  & #d2 {
+    transform: translate(-15px, -2px);
+    animation-delay: 0.7s;
+  }
+
+  & #d3 {
+    transform: translate(15px, -2px);
+    animation-delay: 0.4;
+  }
+
+  & #d4 {
+    transform: translate(45px, -2px);
+    animation-delay: 0.1;
+  }
+`;
+
+const Raindrops = () => {
+  return (
+    <StyledRaindrops>
+      <div className="rain drops" id="d1"></div>
+      <div className="rain drops" id="d2"></div>
+      <div className="rain drops" id="d3"></div>
+      <div className="rain drops" id="d4"></div>
+    </StyledRaindrops>
+  );
+};
 
 export default Raindrops;

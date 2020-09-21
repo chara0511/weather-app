@@ -5,7 +5,6 @@ import theme from "./theme";
 const { colors, shadows } = theme;
 
 const StyledContainer = styled.div`
-  border: 1px solid green;
   height: ${(props) => (props.withHeight ? props.withHeight : "auto")};
   overflow: auto;
 

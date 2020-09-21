@@ -23,7 +23,6 @@ const StyledStatus = styled.h2`
 `;
 
 const StyledBar = styled.div`
-  border: 1px solid red;
   width: 230px;
   text-align: right;
 `;

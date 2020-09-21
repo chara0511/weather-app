@@ -45,11 +45,9 @@ const StyledNav = styled.div`
 `;
 
 const StyledWrapper = styled.div`
-  border: 1px solid red;
   height: 90vh;
   margin: 11px;
   position: relative;
-
   ${media.lgDesktop`
     margin: 42px 46px 0 42px;
   `}
@@ -60,7 +58,7 @@ const StyledCloseBtn = styled.button`
   padding: 0;
   position: absolute;
   right: 0;
-  top: 7px;
+  top: -50px;
 
   & svg {
     width: 24px;

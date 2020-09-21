@@ -16,10 +16,7 @@ const animation = keyframes`
 const StyledSun = styled.div`
   width: 100px;
   height: 100px;
-  margin-top: ${({ mtop }) => (mtop ? mtop : "auto")};
-  margin-right: auto;
-  margin-bottom: auto;
-  margin-left: ${({ mleft }) => (mleft ? mleft : "auto")};
+  margin-left: ${({ marginleft }) => (marginleft ? marginleft : 0)};
 
   & .sun {
     background: #ffec65;
@@ -90,9 +87,9 @@ const StyledContainer = styled.div`
   position: relative;
 `;
 
-const Sun = ({ withsizes, mtop, mleft, animated }) => {
+const Sun = ({ withsizes, marginleft, animated }) => {
   return (
-    <StyledSun mtop={mtop} mleft={mleft} animated={animated}>
+    <StyledSun marginleft={marginleft} animated={animated}>
       <StyledContainer withsizes={withsizes}>
         <div className="sun"></div>
         <div className="transparent"></div>

@@ -11,9 +11,12 @@ const StyledContainer = styled.div`
   column-gap: 26px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: 0 30px;
   padding-bottom: 20px;
   row-gap: 32px;
+
+  ${media.lgTablet`
+    grid-template-columns: 1fr 1fr 1fr;
+  `}
 
   ${media.smDesktop`
     grid-template-columns: 1fr 1fr 1fr 1fr;

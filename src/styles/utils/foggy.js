@@ -47,7 +47,7 @@ const StyledFoggy = styled.div`
     top: 1.5em;
     width: 3em;
     left: 1em;
-    animation-delay: -6s;
+    animation-delay: -4s;
   }
 
   & .fog2::before {
@@ -59,6 +59,7 @@ const StyledFoggy = styled.div`
     top: 2.25em;
     width: 4em;
     left: 0.5em;
+    animation-delay: -8s;
   }
 `;
 

@@ -35,15 +35,15 @@ const StyledContainer = styled.div`
 const StyledContent = styled.div`
   align-items: center;
   background: ${colors.background};
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   font-size: ${fontSizes.md};
   justify-content: space-between;
   height: 204px;
-  padding: 22px 0;
-  width: 328px;
+  max-width: 328px;
   margin: auto;
+  padding: 22px 0;
+  width: 100%;
 `;
 
 const StyledContentSmall = styled(StyledContent)`

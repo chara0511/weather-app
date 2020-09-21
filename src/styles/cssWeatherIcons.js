@@ -8,7 +8,7 @@ import Rain from "./Rain";
 import ScatteredClouds from "./ScatteredClouds";
 import ShowerRain from "./ShowerRain";
 import Snow from "./Snow";
-import Thunderstorm from "./Thunderstorm";
+// import Thunderstorm from "./Thunderstorm";
 
 const CSSWeatherIcons = () => {
   return (
@@ -20,7 +20,7 @@ const CSSWeatherIcons = () => {
       <ScatteredClouds />
       <ShowerRain />
       <Rain />
-      <Thunderstorm />
+      {/*<Thunderstorm /> error*/}
       <Snow />
       <Mist />
     </>

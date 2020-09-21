@@ -13,7 +13,7 @@ const StyledFlakes = styled.div`
   float: left;
   position: relative;
   animation: ${animation} 12s linear infinite;
-  margin-top: 45%;
+  margin-top: 15%;
   z-index: 6;
 
   & .a,

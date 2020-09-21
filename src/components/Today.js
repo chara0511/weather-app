@@ -7,7 +7,6 @@ import { getNow } from "../utils/date";
 const { fontSizes } = theme;
 
 const StyledContainer = styled.div`
-  border: 1px solid black;
   text-align: center;
   min-height: 65px;
 `;

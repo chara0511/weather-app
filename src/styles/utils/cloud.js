@@ -38,6 +38,7 @@ const StyledCloud = styled.div`
     animation-duration: 5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.15);
 
     &:before,
     &:after {

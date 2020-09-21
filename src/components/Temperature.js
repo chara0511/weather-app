@@ -7,7 +7,6 @@ import { getFahrenheitValue } from "../utils";
 const { fontSizes } = theme;
 
 const StyledContainer = styled.div`
-  border: 1px solid blue;
   text-align: center;
   margin-top: -2em;
 `;

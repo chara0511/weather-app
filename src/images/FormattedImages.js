@@ -51,7 +51,7 @@ const FormattedImages = ({ name, withscale }) => {
       return <Mist withscale={withscale} />;
 
     default:
-      return;
+      return <ClearSkyDay withscale={withscale} />;
   }
 };
 

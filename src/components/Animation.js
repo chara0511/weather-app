@@ -6,7 +6,6 @@ import FormattedImages from "../images/FormattedImages";
 import media from "../styles/media";
 
 const StyledContainer = styled.div`
-  border: 1px solid green;
   background-image: url(${clouds});
   background-position: center;
   background-repeat: no-repeat;

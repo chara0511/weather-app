@@ -15,7 +15,6 @@ const { colors } = theme;
 
 const StyledContainer = styled.div`
   background-color: ${colors.background};
-  border: 1px solid red;
   margin: 0;
   min-height: 100vh;
   width: 100%;

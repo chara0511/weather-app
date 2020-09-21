@@ -13,18 +13,11 @@ const StyledRain = styled(IconContainer)`
 const Rain = ({ withscale }) => {
   return (
     <StyledRain withscale={withscale}>
-      <Sun withsizes="50%" mleft="0" mtop="0" />
+      <Sun withsizes="50%" marginleft="-10%" />
 
       <Cloud positiontop="5%" />
 
-      <Raindrops>
-        <div className="raindrop"></div>
-        <div className="raindrop"></div>
-        <div className="raindrop"></div>
-        <div className="raindrop"></div>
-        <div className="raindrop"></div>
-        <div className="raindrop"></div>
-      </Raindrops>
+      <Raindrops />
     </StyledRain>
   );
 };

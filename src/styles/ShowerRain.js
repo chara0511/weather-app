@@ -1,6 +1,6 @@
 import React from "react";
 
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Cloud from "./utils/cloud";
 import IconContainer from "./utils/iconContainer";
 import Raindrops from "./utils/raindrops";
@@ -14,14 +14,7 @@ const ShowerRain = ({ withscale }) => {
     <StyledShowerRain withscale={withscale}>
       <Cloud positiontop="5%" />
 
-      <Raindrops>
-        <div className="raindrop"></div>
-        <div className="raindrop"></div>
-        <div className="raindrop"></div>
-        <div className="raindrop"></div>
-        <div className="raindrop"></div>
-        <div className="raindrop"></div>
-      </Raindrops>
+      <Raindrops />
     </StyledShowerRain>
   );
 };
