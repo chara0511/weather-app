@@ -28,6 +28,7 @@ const StyledContainer = styled.div`
 `;
 const Forecast = () => {
   const { forecast } = useContext(WeatherContext);
+  console.log(forecast?.daily[1].weather[0].icon);
 
   const day = getListDays();
   return (

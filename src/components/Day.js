@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { WeatherContext } from "../context/weatherContext";
 
-import image from "../images/Shower.png";
+import FormattedImages from "../images/FormattedImages";
 
 import { theme } from "../styles";
 import { getFahrenheitValue } from "../utils";
@@ -19,6 +19,7 @@ const StyledContainer = styled.div`
   justify-content: space-between;
   margin: auto;
   width: 120px;
+  position: relative;
 
   & img {
     height: 62px;
@@ -61,7 +62,7 @@ const Day = ({ daily, day }) => {
     <StyledContainer>
       <StyledDay>{day}</StyledDay>
 
-      <img src={image} alt="shower" />
+      <FormattedImages name={daily.weather[0].icon} withscale="0.5" />
 
       <StyledTemp>
         <p>

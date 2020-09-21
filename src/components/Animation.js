@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import weather from "../images/Shower.png";
+import { WeatherContext } from "../context/weatherContext";
 import clouds from "../images/Cloud-background.png";
+import FormattedImages from "../images/FormattedImages";
 import media from "../styles/media";
 
 const StyledContainer = styled.div`
@@ -20,27 +21,13 @@ const StyledContainer = styled.div`
   `}
 `;
 
-const StyledImage = styled.img`
-  border: 1px solid yellow;
-  bottom: 0;
-  height: 174px;
-  margin: auto;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 150px;
-
-  ${media.smDesktop`
-    height: 234px;
-    width: 202px;
-  `}
-`;
-
 const Animation = () => {
+  const { current } = useContext(WeatherContext);
+
+  console.log(current?.weather[0].icon);
   return (
     <StyledContainer>
-      <StyledImage src={weather} alt="weather" />
+      <FormattedImages name={current?.weather[0].icon} />
     </StyledContainer>
   );
 };
