@@ -54,7 +54,7 @@ const StyledDetails = styled.div`
   }
 `;
 
-const WindStatus = ({ windSpeed }) => {
+const WindStatus = ({ windSpeed = 0 }) => {
   const { fahrenheit } = useContext(WeatherContext);
 
   const value = fahrenheit ? getMphValue(windSpeed) : windSpeed;

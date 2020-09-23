@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useRef, useContext, useLayoutEffect } from "react";
 
 import ListCities from "./ListCities";
 import { getCurrentLocation } from "../utils/location";
@@ -13,8 +13,10 @@ import media from "../styles/media";
 import { theme } from "../styles";
 import ScrollY from "../styles/scrollY";
 import { WeatherContext } from "../context/weatherContext";
+import LoopIcon from "../icons/loopIcon";
+import ErrorIcon from "../icons/errorIcon";
 
-const { colors, shadows, transition } = theme;
+const { colors, fontSizes, shadows, transition } = theme;
 
 const StyledContainer = styled.div`
   position: absolute;
@@ -70,11 +72,32 @@ const StyledForm = styled.form`
   display: flex;
   gap: 0.5em;
   justify-content: space-between;
-  margin: 60px auto;
+  margin-top: 60px;
   position: relative;
 
-  & svg {
+  & .searchIcon {
     position: absolute;
+    width: 24px;
+    height: 24px;
+    fill: ${colors.grayish};
+    margin: 12px;
+  }
+
+  & .loopIcon {
+    width: 24px;
+    height: 24px;
+    margin: 12px;
+  }
+`;
+
+const StyledAlert = styled.div`
+  display: flex;
+  align-items: center;
+  height: 30px;
+  margin-bottom: 30px;
+  font-size: ${fontSizes.md};
+
+  & .errorIcon {
     width: 24px;
     height: 24px;
     fill: ${colors.grayish};
@@ -113,40 +136,75 @@ const StyledSubmit = styled.button`
   background-color: ${colors.buttonBackground};
   color: ${colors.white};
   height: 48px;
-  width: 86px;
   line-height: 19px;
+  width: 86px;
+  position: relative;
 `;
 
 const Search = () => {
-  const { getDataByLatLng, showError } = useContext(WeatherContext);
+  const {
+    current,
+    errors,
+    getDataByTag,
+    getDataByLatLng,
+    showError,
+  } = useContext(WeatherContext);
 
   const [state, setState] = useState({
     city: "",
-    cities: [{ id: uuidv4(), name: "London" }],
+    cities: [],
   });
 
   const [active, setActive] = useState(false);
 
+  const [loading, setLoading] = useState(null);
+
   const ref = useRef(null);
 
   const handleChange = (e) => {
+    showError({ message: "" });
+
     setState({
       ...state,
       [e.target.name]: e.target.value,
     });
   };
 
+  const addCity = async (nameCity) => {
+    await getDataByTag(nameCity);
+    return setLoading(false);
+  };
+
+  useLayoutEffect(() => {
+    if (Object.keys(errors).length === 0) {
+      setState((prev) => ({
+        city: "",
+        cities: [
+          { id: uuidv4(), name: current.name, country: current.sys.country },
+          ...prev.cities,
+        ],
+      }));
+
+      hideSearch();
+    } else {
+      ref.current.focus();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [errors?.message]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
 
     if (state.city.trim() === "") {
+      setTimeout(() => {
+        setLoading(false);
+      }, 300);
+      showError({ message: "Woops, enter a valid city name" });
       return;
     }
 
-    setState((prev) => ({
-      city: "",
-      cities: [{ id: uuidv4(), name: state.city }, ...prev.cities],
-    }));
+    addCity(state.city);
   };
 
   const showSearch = () => {
@@ -162,7 +220,7 @@ const Search = () => {
   const currentLocation = () => {
     getCurrentLocation()
       .then(({ lat, lng }) => getDataByLatLng(lat, lng))
-      .catch((error) => showError(error.message));
+      .catch((error) => showError({ message: error.message }));
   };
 
   return (
@@ -179,14 +237,24 @@ const Search = () => {
             <StyledSearchInput
               type="text"
               placeholder="search location"
-              onChange={handleChange}
               ref={ref}
               name="city"
+              onChange={handleChange}
               value={state.city}
             />
 
-            <StyledSubmit type="submit">Search</StyledSubmit>
+            <StyledSubmit type="submit">
+              {loading ? <LoopIcon /> : "Search"}
+            </StyledSubmit>
           </StyledForm>
+
+          <StyledAlert>
+            {errors?.message && (
+              <>
+                <ErrorIcon /> <p>{errors?.message}</p>
+              </>
+            )}
+          </StyledAlert>
 
           <ScrollY withHeight="65vh">
             <ListCities cities={state.cities} hideSearch={hideSearch} />

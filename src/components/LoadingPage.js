@@ -1,16 +1,6 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import LoopIcon from "../icons/loopIcon";
-
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-`;
 
 const StyledContainer = styled.div`
   display: flex;
@@ -19,8 +9,7 @@ const StyledContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  & svg {
-    animation: ${rotate} 2s linear infinite;
+  & .loopIcon {
     width: 60px;
     height: 60px;
   }

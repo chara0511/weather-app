@@ -7,25 +7,31 @@ export const WeatherReducer = (state, action) => {
       return {
         ...state,
         current: action.payload,
-        loading: false,
         celsius: true,
-        errors: null,
+        errors: {},
+        loading: false,
       };
 
     case "WEATHER_FORECAST":
       return {
         ...state,
         forecast: action.payload,
-        loading: false,
         celsius: true,
-        errors: null,
+        errors: {},
+        loading: false,
       };
 
     case "ERROR":
       return {
         ...state,
+        errors: action.payload,
         loading: false,
-        errors: { error: true, errorInfo: action.payload },
+      }; //celsius:false?
+
+    case "LOADING":
+      return {
+        ...state,
+        loading: action.payload,
       }; //celsius:false?
 
     default:

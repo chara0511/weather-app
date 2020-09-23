@@ -24,7 +24,7 @@ const Main = () => {
   useEffect(() => {
     getCurrentLocation()
       .then(({ lat, lng }) => getDataByLatLng(lat, lng))
-      .catch((error) => showError(error.message));
+      .catch((error) => showError({ message: error.message }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

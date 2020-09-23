@@ -8,15 +8,15 @@ const ListCities = ({ cities, hideSearch }) => {
   return (
     <ul>
       <TransitionGroup>
-        {cities.map(({ name, id }) => (
+        {cities.map(({ id, name, country }) => (
           <CSSTransition
             key={id}
             nodeRef={nodeRef}
             classNames="fadedown"
-            timeout={500}
+            timeout={300}
           >
             <li ref={nodeRef}>
-              <City name={name} hideSearch={hideSearch} />
+              <City name={name} country={country} hideSearch={hideSearch} />
             </li>
           </CSSTransition>
         ))}

@@ -1,6 +1,6 @@
 import React from "react";
 
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import Cloud from "./utils/cloud";
 import IconContainer from "./utils/iconContainer";
 import Raindrops from "./utils/raindrops";

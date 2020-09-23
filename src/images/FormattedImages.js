@@ -10,6 +10,7 @@ import Rain from "../styles/Rain";
 import Thunderstorm from "../styles/Thunderstorm";
 import Snow from "../styles/Snow";
 import Mist from "../styles/Mist";
+import ErrorIcon from "../icons/errorIcon";
 
 const FormattedImages = ({ name, withscale }) => {
   switch (name) {
@@ -51,7 +52,7 @@ const FormattedImages = ({ name, withscale }) => {
       return <Mist withscale={withscale} />;
 
     default:
-      return <ClearSkyDay withscale={withscale} />;
+      return <ErrorIcon />;
   }
 };
 

@@ -32,20 +32,18 @@ const StyledContainer = styled.button`
   }
 `;
 
-const City = ({ name, hideSearch }) => {
-  const { getDataByTag, errors } = useContext(WeatherContext);
+const City = ({ name, country, hideSearch }) => {
+  const { getDataByTag } = useContext(WeatherContext);
 
-  const getCityData = () => {
-    getDataByTag(name);
-
-    if (!errors) {
-      hideSearch(); // useEffect
-    }
+  const handleClick = async () => {
+    console.log(name);
+    await getDataByTag(name);
+    return hideSearch();
   };
 
   return (
-    <StyledContainer onClick={getCityData}>
-      {name} <NextIcon />
+    <StyledContainer onClick={handleClick}>
+      {name}, {country} <NextIcon />
     </StyledContainer>
   );
 };

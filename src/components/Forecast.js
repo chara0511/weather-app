@@ -19,7 +19,7 @@ const StyledContainer = styled.div`
   `}
 
   ${media.smDesktop`
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     margin: auto;
   `}
 
@@ -31,7 +31,7 @@ const StyledContainer = styled.div`
 `;
 const Forecast = () => {
   const { forecast } = useContext(WeatherContext);
-  console.log(forecast?.daily[1].weather[0].icon);
+  // console.log(forecast?.daily[1].weather[0].icon);
 
   const day = getListDays();
   return (

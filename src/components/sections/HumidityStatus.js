@@ -17,14 +17,14 @@ const StyledStatus = styled.h2`
   & span {
     color: ${colors.white};
     font-size: ${fontSizes.xxl};
-    line-height: 42px;
     font-weight: 500;
+    line-height: 42px;
   }
 `;
 
 const StyledBar = styled.div`
-  width: 230px;
   text-align: right;
+  width: 230px;
 `;
 
 const StyledWrapper = styled.div`
@@ -40,19 +40,20 @@ const StyledParams = styled.p`
 `;
 
 const StyledBarContent = styled.div`
-  width: 230px;
-  height: 8px;
-  position: relative;
   background-color: ${colors.white};
   border-radius: 8px;
+  height: 8px;
+  position: relative;
+  width: 230px;
 `;
 
 const StyledResult = styled.div`
-  position: absolute;
-  width: ${(props) => `${props.humidity}%`};
   background-color: ${colors.barYellow};
+  border-radius: 8px;
   height: 8px;
+  position: absolute;
   transition: ${transition};
+  width: ${(props) => `${props.humidity}%`};
 `;
 
 const HumidityStatus = ({ humidity }) => {

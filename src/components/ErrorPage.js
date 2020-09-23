@@ -11,8 +11,8 @@ const StyledContainer = styled.div`
   width: 100%;
 
   & svg {
-    height: 60px;
-    width: 60px;
+    height: 50px;
+    width: 50px;
     margin-bottom: 0.5em;
   }
 `;

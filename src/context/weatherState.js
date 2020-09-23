@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 import { WeatherContext } from "./weatherContext";
 import { WeatherReducer } from "./weatherReducer";
 
-import { CURRENT_WEATHER, WEATHER_FORECAST, ERROR } from "../types";
+import { CURRENT_WEATHER, WEATHER_FORECAST, ERROR, LOADING } from "../types";
 import {
   currentWeatherByLatLng,
   currentWeatherByTag,
@@ -15,7 +15,7 @@ const WeatherState = ({ children }) => {
     current: null,
     forecast: null,
     loading: true,
-    errors: { error: null, errorInfo: null },
+    errors: null,
     celsius: null,
     fahrenheit: null,
   };
@@ -35,7 +35,8 @@ const WeatherState = ({ children }) => {
 
       dispatch({ type: WEATHER_FORECAST, payload: forecast });
     } catch (error) {
-      showError(error.response.statusText);
+      console.log({ error });
+      showError({ message: error?.response.statusText });
     }
   };
 
@@ -49,12 +50,17 @@ const WeatherState = ({ children }) => {
 
       dispatch({ type: WEATHER_FORECAST, payload: forecast });
     } catch (error) {
-      showError(error.response.statusText);
+      console.log(error.message);
+      showError({ message: error.response.statusText });
     }
   };
 
   const showError = (error) => {
     dispatch({ type: ERROR, payload: error });
+  };
+
+  const isLoading = () => {
+    dispatch({ type: LOADING, payload: true });
   };
 
   return (
@@ -69,6 +75,7 @@ const WeatherState = ({ children }) => {
         getDataByTag,
         getDataByLatLng,
         showError,
+        isLoading,
       }}
     >
       {children}

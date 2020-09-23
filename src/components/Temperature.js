@@ -28,7 +28,7 @@ const Desc = styled.h3`
   text-transform: capitalize;
 `;
 
-const Temperature = ({ temp, desc }) => {
+const Temperature = ({ temp = 0, desc }) => {
   const { fahrenheit } = useContext(WeatherContext);
 
   const value = fahrenheit ? getFahrenheitValue(temp) : temp;

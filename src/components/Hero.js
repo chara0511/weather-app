@@ -23,7 +23,7 @@ const StyledContainer = styled.div`
   justify-content: space-evenly;
   position: relative;
 
-  ${media.mdDesktop`
+  ${media.smDesktop`
     max-width: 460px;
     position: fixed;
   `}

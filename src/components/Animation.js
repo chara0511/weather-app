@@ -14,6 +14,12 @@ const StyledContainer = styled.div`
   position: relative;
   width: 100%;
 
+  & svg {
+    width: 50%;
+    margin: auto;
+    display: block;
+  }
+
   ${media.smDesktop`
     background-size: 650px;
     height: 376px;
@@ -23,7 +29,6 @@ const StyledContainer = styled.div`
 const Animation = () => {
   const { current } = useContext(WeatherContext);
 
-  console.log(current?.weather[0].icon);
   return (
     <StyledContainer>
       <FormattedImages name={current?.weather[0].icon} />

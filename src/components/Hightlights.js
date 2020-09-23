@@ -22,9 +22,9 @@ const StyledContainer = styled.div`
   row-gap: 32px;
   padding: 1.25em 0;
 
-  ${media.smDesktop`
+  ${media.mdDesktop`
     grid-template-columns: 1fr 1fr;  
-    column-gap: 36px;
+    column-gap: 36px; 
   `}
 
   ${media.lgDesktop`

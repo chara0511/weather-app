@@ -11,14 +11,14 @@ const { colors } = theme;
 const StyledContainer = styled.div`
   background-color: ${colors.backgroundDetails};
   padding: 52px 24px;
-  width: 100%;
 
   ${media.smDesktop`
+    margin-left: 460px;
     padding: 52px 54px;
   `}
 
   ${media.mdDesktop`
-    margin-left: 460px;
+    width: 100%;
   `}
 
   ${media.lgDesktop`
