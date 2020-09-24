@@ -2,7 +2,14 @@ import React, { useReducer } from "react";
 import { WeatherContext } from "./weatherContext";
 import { WeatherReducer } from "./weatherReducer";
 
-import { CURRENT_WEATHER, WEATHER_FORECAST, ERROR, LOADING } from "../types";
+import {
+  CURRENT_WEATHER,
+  WEATHER_FORECAST,
+  ERROR,
+  LOADING,
+  CELSIUS,
+  FAHRENHEIT,
+} from "../types";
 import {
   currentWeatherByLatLng,
   currentWeatherByTag,
@@ -35,8 +42,8 @@ const WeatherState = ({ children }) => {
 
       dispatch({ type: WEATHER_FORECAST, payload: forecast });
     } catch (error) {
-      console.log({ error });
-      showError({ message: error?.response.statusText });
+      //console.log({ error });
+      showError({ message: error.response?.statusText });
     }
   };
 
@@ -50,8 +57,8 @@ const WeatherState = ({ children }) => {
 
       dispatch({ type: WEATHER_FORECAST, payload: forecast });
     } catch (error) {
-      console.log(error.message);
-      showError({ message: error.response.statusText });
+      console.log(error.error.message);
+      showError({ message: error.response?.statusText });
     }
   };
 
@@ -63,19 +70,29 @@ const WeatherState = ({ children }) => {
     dispatch({ type: LOADING, payload: true });
   };
 
+  const switchCelsius = () => {
+    dispatch({ type: CELSIUS, payload: true });
+  };
+
+  const switchFahrenheit = () => {
+    dispatch({ type: FAHRENHEIT, payload: true });
+  };
+
   return (
     <WeatherContext.Provider
       value={{
         current: state.current,
         forecast: state.forecast,
         loading: state.loading,
+        errors: state.errors,
         celsius: state.celsius,
         fahrenheit: state.fahrenheit,
-        errors: state.errors,
         getDataByTag,
         getDataByLatLng,
         showError,
         isLoading,
+        switchCelsius,
+        switchFahrenheit,
       }}
     >
       {children}

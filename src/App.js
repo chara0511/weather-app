@@ -3,14 +3,14 @@ import React from "react";
 import Main from "./components/Main";
 
 import WeatherState from "./context/weatherState";
-// import CSSWeatherIcons from "./styles/cssWeatherIcons";
+//import CSSWeatherIcons from "./styles/cssWeatherIcons";
 
-import GlobalStyles from "./styles/globalStyles";
+import GlobalStyle from "./styles/globalStyles";
 
 function App() {
   return (
     <>
-      <GlobalStyles />
+      <GlobalStyle />
 
       <WeatherState>
         <Main />

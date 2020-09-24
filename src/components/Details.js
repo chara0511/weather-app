@@ -6,6 +6,7 @@ import { theme } from "../styles";
 import styled from "styled-components";
 import media from "../styles/media";
 import { WeatherContext } from "../context/weatherContext";
+import SwitchTemp from "./SwitchTemp";
 const { colors } = theme;
 
 const StyledContainer = styled.div`
@@ -22,7 +23,7 @@ const StyledContainer = styled.div`
   `}
 
   ${media.lgDesktop`
-    height: 100vh;
+    min-height: 100vh;
     padding: 52px 150px;
   `}
 `;
@@ -35,7 +36,7 @@ const Details = () => {
       {errors?.errorInfo === "Unauthorized" ||
       errors?.errorInfo === "User denied Geolocation" ? null : (
         <>
-          <div>SwitchTemp.js</div>
+          <SwitchTemp />
 
           <Forecast />
 

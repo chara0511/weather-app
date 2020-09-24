@@ -8,6 +8,7 @@ export const WeatherReducer = (state, action) => {
         ...state,
         current: action.payload,
         celsius: true,
+        fahrenheit: false,
         errors: {},
         loading: false,
       };
@@ -17,6 +18,7 @@ export const WeatherReducer = (state, action) => {
         ...state,
         forecast: action.payload,
         celsius: true,
+        fahrenheit: false,
         errors: {},
         loading: false,
       };
@@ -34,6 +36,19 @@ export const WeatherReducer = (state, action) => {
         loading: action.payload,
       }; //celsius:false?
 
+    case "CELSIUS":
+      return {
+        ...state,
+        celsius: true,
+        fahrenheit: false,
+      };
+
+    case "FAHRENHEIT":
+      return {
+        ...state,
+        celsius: false,
+        fahrenheit: true,
+      };
     default:
       return state;
   }

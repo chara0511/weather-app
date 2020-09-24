@@ -4,7 +4,7 @@ import FontFaces from "./fonts";
 import TransitionStyles from "./transitionStyles";
 const { colors, fontSizes, fonts } = theme;
 
-const GlobalStyles = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   ${FontFaces};
 
   html {
@@ -91,7 +91,7 @@ const GlobalStyles = createGlobalStyle`
 
     &:focus,
     &:active {
-      outline-color: ${colors.white};
+      outline: none;
     }
   }
 
@@ -143,4 +143,4 @@ const GlobalStyles = createGlobalStyle`
 
 `;
 
-export default GlobalStyles;
+export default GlobalStyle;

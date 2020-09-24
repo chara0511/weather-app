@@ -1,4 +1,5 @@
 import theme from "./theme";
-import CircularButton from "./circularButton";
+import GpsButton from "./gpsButton";
+import TempButton from "./tempButton";
 
-export { theme, CircularButton };
+export { theme, GpsButton, TempButton };

@@ -2,15 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import GpsIcon from "../icons/gpsIcon";
 
-import { theme } from "../styles";
+import { theme } from ".";
 
 const { colors, shadows } = theme;
 
-const StyledCircularBtn = styled.button`
+const StyledGpsButton = styled.button`
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  background: ${colors.inputBg};
+  background-color: ${colors.inputBg};
   box-shadow: ${shadows.input};
 
   & svg {
@@ -19,12 +19,12 @@ const StyledCircularBtn = styled.button`
   }
 `;
 
-const CircularButton = ({ currentLocation }) => {
+const GpsButton = ({ currentLocation }) => {
   return (
-    <StyledCircularBtn onClick={currentLocation}>
+    <StyledGpsButton onClick={currentLocation}>
       <GpsIcon />
-    </StyledCircularBtn>
+    </StyledGpsButton>
   );
 };
 
-export default CircularButton;
+export default GpsButton;

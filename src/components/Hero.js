@@ -36,7 +36,7 @@ const Hero = () => {
     <StyledContainer>
       {errors?.errorInfo === "Unauthorized" ||
       errors?.errorInfo === "User denied Geolocation" ? (
-        <ErrorPage message={errors.errorInfo} />
+        <ErrorPage message={errors?.errorInfo} />
       ) : (
         <>
           <Search />

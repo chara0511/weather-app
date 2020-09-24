@@ -11,20 +11,20 @@ const StyledContainer = styled.div`
   column-gap: 26px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding-bottom: 20px;
+  padding: 52px 0;
   row-gap: 32px;
 
   ${media.lgTablet`
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   `}
 
   ${media.smDesktop`
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     margin: auto;
   `}
 
   ${media.mdDesktop`
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    padding: 66px 0;
     /* height: 216px;
     overflow-y: scroll; */
   `}

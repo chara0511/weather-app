@@ -10,7 +10,7 @@ const StyledContainer = styled.div`
   justify-content: center;
   width: 100%;
 
-  & svg {
+  & .errorIcon {
     height: 50px;
     width: 50px;
     margin-bottom: 0.5em;

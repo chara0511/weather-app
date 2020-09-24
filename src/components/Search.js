@@ -8,7 +8,7 @@ import CloseIcon from "../icons/closeIcon";
 import { v4 as uuidv4 } from "uuid";
 
 import styled from "styled-components";
-import CircularButton from "../styles/circularButton";
+import GpsButton from "../styles/gpsButton";
 import media from "../styles/media";
 import { theme } from "../styles";
 import ScrollY from "../styles/scrollY";
@@ -264,7 +264,7 @@ const Search = () => {
 
       <StyledSearchBtn onClick={showSearch}>Search for places</StyledSearchBtn>
 
-      <CircularButton currentLocation={currentLocation} />
+      <GpsButton currentLocation={currentLocation} />
     </StyledContainer>
   );
 };

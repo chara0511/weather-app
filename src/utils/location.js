@@ -9,7 +9,7 @@ export const getCurrentLocation = () =>
     }
 
     const success = (position) => {
-      console.log(position.coords.latitude, position.coords.longitude);
+      //console.log(position.coords.latitude, position.coords.longitude);
 
       resolve({
         lat: position.coords.latitude,

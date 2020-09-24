@@ -9,6 +9,8 @@ const theme = {
     backgroundDetails: "#100E1D",
     buttonBackground: "#3c47e9",
     barYellow: "#ffec65",
+    bgTempBtn: "#585676",
+    colorTempBtn: "#110E3C",
   },
 
   shadows: {

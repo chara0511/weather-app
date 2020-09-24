@@ -14,7 +14,7 @@ const { colors, fontSizes } = theme;
 
 const Title = styled.h4`
   font-size: ${fontSizes.xl};
-  padding: 32px 0;
+  padding-bottom: 32px;
 `;
 
 const StyledContainer = styled.div`
