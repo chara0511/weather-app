@@ -2,7 +2,6 @@ import React from "react";
 import Main from "./components/Main";
 
 import WeatherState from "./context/weatherState";
-// import CSSWeatherIcons from "./styles/cssWeatherIcons";
 
 import GlobalStyle from "./styles/globalStyles";
 
@@ -13,7 +12,6 @@ function App() {
 
       <WeatherState>
         <Main />
-        {/* <CSSWeatherIcons /> */}
       </WeatherState>
     </>
   );

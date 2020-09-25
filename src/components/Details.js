@@ -7,6 +7,7 @@ import styled from "styled-components";
 import media from "../styles/media";
 import { WeatherContext } from "../context/weatherContext";
 import SwitchTemp from "./SwitchTemp";
+import Footer from "./Footer";
 const { colors } = theme;
 
 const StyledContainer = styled.div`
@@ -43,6 +44,8 @@ const Details = () => {
           <Forecast />
 
           <Hightlights />
+
+          <Footer />
         </>
       )}
     </StyledContainer>
