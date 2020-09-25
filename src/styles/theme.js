@@ -11,6 +11,7 @@ const theme = {
     barYellow: "#ffec65",
     bgTempBtn: "#585676",
     colorTempBtn: "#110E3C",
+    cloudNight: "#32354b",
   },
 
   shadows: {

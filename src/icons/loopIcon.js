@@ -3,16 +3,16 @@ import styled, { keyframes } from "styled-components";
 
 const rotate = keyframes`
   from {
-    transform: rotate(0deg);
+    transform: rotate(360deg);
   }
 
   to {
-    transform: rotate(360deg);
+    transform: rotate(0deg);
   }
 `;
 
 const StyledSVG = styled.svg`
-  animation: ${rotate} 2s linear infinite;
+  animation: ${rotate} 1.5s linear infinite;
 `;
 
 const LoopIcon = () => {

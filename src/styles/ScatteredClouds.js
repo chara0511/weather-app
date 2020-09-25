@@ -8,10 +8,10 @@ const StyledScatteredClouds = styled(IconContainer)`
   transform: scale(${({ withscale }) => (withscale ? withscale : 1)});
 `;
 
-const ScatteredClouds = ({ withscale }) => {
+const ScatteredClouds = ({ withscale, zindex }) => {
   return (
     <StyledScatteredClouds withscale={withscale}>
-      <Cloud />
+      <Cloud zindex={zindex} />
     </StyledScatteredClouds>
   );
 };

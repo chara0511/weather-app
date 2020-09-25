@@ -9,10 +9,10 @@ const StyledShowerRain = styled(IconContainer)`
   transform: scale(${({ withscale }) => (withscale ? withscale : 1)});
 `;
 
-const ShowerRain = ({ withscale }) => {
+const ShowerRain = ({ withscale, zindex }) => {
   return (
     <StyledShowerRain withscale={withscale}>
-      <Cloud positiontop="5%" />
+      <Cloud positiontop="5%" zindex={zindex} />
 
       <Raindrops />
     </StyledShowerRain>

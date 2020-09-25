@@ -1,21 +1,17 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { WeatherContext } from "../context/weatherContext";
-import clouds from "../images/Cloud-background.png";
+import FormattedBgImages from "../images/FormattedBgImages";
 import FormattedImages from "../images/FormattedImages";
 import media from "../styles/media";
 
 const StyledContainer = styled.div`
-  background-image: url(${clouds});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 564px;
+  width: 100%;
   height: 326px;
   position: relative;
-  width: 100%;
 
-  & svg {
-    width: 50%;
+  & .errorIcon {
+    width: 25%;
     margin: auto;
     display: block;
   }
@@ -31,6 +27,7 @@ const Animation = () => {
 
   return (
     <StyledContainer>
+      <FormattedBgImages name={current?.weather[0].icon} zindex />
       <FormattedImages name={current?.weather[0].icon} />
     </StyledContainer>
   );

@@ -12,6 +12,7 @@ const { colors } = theme;
 const StyledContainer = styled.div`
   background-color: ${colors.backgroundDetails};
   padding: 52px 24px;
+  position: relative;
 
   ${media.smDesktop`
     margin-left: 460px;
@@ -20,6 +21,7 @@ const StyledContainer = styled.div`
 
   ${media.mdDesktop`
     width: 100%;
+    min-height: 100vh;
   `}
 
   ${media.lgDesktop`

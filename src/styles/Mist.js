@@ -9,10 +9,10 @@ const StyledMist = styled(IconContainer)`
   transform: scale(${({ withscale }) => (withscale ? withscale : 1)});
 `;
 
-const Mist = ({ withscale }) => {
+const Mist = ({ withscale, zindex }) => {
   return (
     <StyledMist withscale={withscale}>
-      <Cloud positiontop="10%" />
+      <Cloud positiontop="10%" zindex={zindex} />
       <Foggy />
     </StyledMist>
   );

@@ -10,10 +10,10 @@ const StyledThunderstorm = styled(IconContainer)`
   transform: scale(${({ withscale }) => (withscale ? withscale : 1)});
 `;
 
-const Thunderstorm = ({ withscale }) => {
+const Thunderstorm = ({ withscale, zindex }) => {
   return (
     <StyledThunderstorm withscale={withscale}>
-      <Cloud positiontop="5%" />
+      <Cloud positiontop="5%" zindex={zindex} />
 
       <Lightning />
 

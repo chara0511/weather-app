@@ -1,9 +1,8 @@
 import React from "react";
-
 import Main from "./components/Main";
 
 import WeatherState from "./context/weatherState";
-//import CSSWeatherIcons from "./styles/cssWeatherIcons";
+// import CSSWeatherIcons from "./styles/cssWeatherIcons";
 
 import GlobalStyle from "./styles/globalStyles";
 

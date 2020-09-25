@@ -12,7 +12,7 @@ import Snow from "../styles/Snow";
 import Mist from "../styles/Mist";
 import ErrorIcon from "../icons/errorIcon";
 
-const FormattedImages = ({ name, withscale }) => {
+const FormattedImages = ({ name, withscale, zindex }) => {
   switch (name) {
     case "01d":
       return <ClearSkyDay withscale={withscale} />;
@@ -21,35 +21,35 @@ const FormattedImages = ({ name, withscale }) => {
       return <ClearSkyNight withscale={withscale} />;
 
     case "02d":
-      return <FewCloudsDay withscale={withscale} />;
+      return <FewCloudsDay withscale={withscale} zindex={zindex} />;
     case "02n":
-      return <FewCloudsNight withscale={withscale} />;
+      return <FewCloudsNight withscale={withscale} zindex={zindex} />;
 
     case "03d":
     case "03n":
     case "04d":
     case "04n":
-      return <ScatteredClouds withscale={withscale} />;
+      return <ScatteredClouds withscale={withscale} zindex={zindex} />;
 
     case "09d":
     case "09n":
-      return <ShowerRain withscale={withscale} />;
+      return <ShowerRain withscale={withscale} zindex={zindex} />;
 
     case "10d":
     case "10n":
-      return <Rain withscale={withscale} />;
+      return <Rain withscale={withscale} zindex={zindex} />;
 
     case "11d":
     case "11n":
-      return <Thunderstorm withscale={withscale} />;
+      return <Thunderstorm withscale={withscale} zindex={zindex} />;
 
     case "13d":
     case "13n":
-      return <Snow withscale={withscale} />;
+      return <Snow withscale={withscale} zindex={zindex} />;
 
     case "50d":
     case "50n":
-      return <Mist withscale={withscale} />;
+      return <Mist withscale={withscale} zindex={zindex} />;
 
     default:
       return <ErrorIcon />;

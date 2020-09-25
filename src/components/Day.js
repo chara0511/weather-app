@@ -62,7 +62,7 @@ const Day = ({ daily, day }) => {
     <StyledContainer>
       <StyledDay>{day}</StyledDay>
 
-      <FormattedImages name={daily.weather[0].icon} withscale="0.5" />
+      <FormattedImages name={daily.weather[0].icon} withscale="0.5" zindex />
 
       <StyledTemp>
         <p>

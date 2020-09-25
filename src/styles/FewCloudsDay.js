@@ -9,12 +9,12 @@ const StyledFewCloudsDay = styled(IconContainer)`
   transform: scale(${({ withscale }) => (withscale ? withscale : 1)});
 `;
 
-const FewCloudsDay = ({ withscale }) => {
+const FewCloudsDay = ({ withscale, zindex }) => {
   return (
     <StyledFewCloudsDay withscale={withscale}>
       <Sun animated />
 
-      <Cloud withsizes="50%" animated />
+      <Cloud withsizes="50%" animated zindex={zindex} />
     </StyledFewCloudsDay>
   );
 };

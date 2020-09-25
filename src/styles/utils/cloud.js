@@ -1,5 +1,8 @@
 import React from "react";
 import styled, { css, keyframes } from "styled-components";
+import { theme } from "..";
+
+const { colors } = theme;
 
 const cloudAnimation = keyframes`
   0% { opacity: 0; }
@@ -14,12 +17,16 @@ const StyledCloud = styled.div`
   height: 100px;
   position: absolute;
   width: 100px;
-  z-index: 6;
+  z-index: ${({ zindex }) => (zindex ? 6 : 0)};
   top: ${({ positiontop }) => (positiontop ? positiontop : "auto")};
+  right: ${({ positionright }) => (positionright ? positionright : "auto")};
+  left: ${({ positionleft }) => (positionleft ? positionleft : "auto")};
+  bottom: ${({ positionbottom }) => (positionbottom ? positionbottom : "auto")};
 
   & .bg {
     border-radius: 50% 50% 10% 0;
-    background-color: white;
+    background-color: ${({ night }) =>
+      night ? `${colors.cloudNight}` : `${colors.white}`};
     height: ${({ withsizes }) => (withsizes ? withsizes : "100%")};
     left: ${({ withsizes }) => (withsizes ? "-10%" : "8%")};
     position: absolute;
@@ -48,7 +55,8 @@ const StyledCloud = styled.div`
     }
 
     &:before {
-      background-color: white;
+      background-color: ${({ night }) =>
+        night ? `${colors.cloudNight}` : `${colors.white}`};
       bottom: 0;
       height: 65%;
       left: -35%;
@@ -57,7 +65,8 @@ const StyledCloud = styled.div`
     }
 
     &:after {
-      background-color: white;
+      background-color: ${({ night }) =>
+        night ? `${colors.cloudNight}` : `${colors.white}`};
       bottom: 0;
       height: 50%;
       right: -20%;
@@ -66,12 +75,26 @@ const StyledCloud = styled.div`
   }
 `;
 
-const Cloud = ({ withsizes, positiontop, animated }) => {
+const Cloud = ({
+  animated,
+  night,
+  positionbottom,
+  positionleft,
+  positionright,
+  positiontop,
+  withsizes,
+  zindex,
+}) => {
   return (
     <StyledCloud
+      animated={animated}
+      night={night}
+      positionbottom={positionbottom}
+      positionleft={positionleft}
+      positionright={positionright}
       positiontop={positiontop}
       withsizes={withsizes}
-      animated={animated}
+      zindex={zindex}
     >
       <div className="bg"></div>
     </StyledCloud>

@@ -7,5 +7,3 @@ export const getListDays = () => {
 
   return days.map((day) => dayjs().add(day, "d").format("ddd, MMM YY"));
 };
-
-console.log(getListDays());

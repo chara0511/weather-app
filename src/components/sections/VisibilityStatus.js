@@ -23,7 +23,7 @@ const StyledStatus = styled.h2`
   }
 `;
 
-const VisibilityStatus = ({ visibility }) => {
+const VisibilityStatus = ({ visibility = 0 }) => {
   const { fahrenheit } = useContext(WeatherContext);
 
   const value = fahrenheit

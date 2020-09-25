@@ -6,7 +6,6 @@ import {
   CURRENT_WEATHER,
   WEATHER_FORECAST,
   ERROR,
-  LOADING,
   CELSIUS,
   FAHRENHEIT,
 } from "../types";
@@ -42,7 +41,7 @@ const WeatherState = ({ children }) => {
 
       dispatch({ type: WEATHER_FORECAST, payload: forecast });
     } catch (error) {
-      //console.log({ error });
+      console.log(error);
       showError({ message: error.response?.statusText });
     }
   };
@@ -66,10 +65,6 @@ const WeatherState = ({ children }) => {
     dispatch({ type: ERROR, payload: error });
   };
 
-  const isLoading = () => {
-    dispatch({ type: LOADING, payload: true });
-  };
-
   const switchCelsius = () => {
     dispatch({ type: CELSIUS, payload: true });
   };
@@ -90,7 +85,6 @@ const WeatherState = ({ children }) => {
         getDataByTag,
         getDataByLatLng,
         showError,
-        isLoading,
         switchCelsius,
         switchFahrenheit,
       }}

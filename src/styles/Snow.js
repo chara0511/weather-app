@@ -9,10 +9,10 @@ const StyledSnow = styled(IconContainer)`
   transform: scale(${({ withscale }) => (withscale ? withscale : 1)});
 `;
 
-const Snow = ({ withscale }) => {
+const Snow = ({ withscale, zindex }) => {
   return (
     <StyledSnow withscale={withscale}>
-      <Cloud positiontop="10%" />
+      <Cloud positiontop="10%" zindex={zindex} />
 
       <Flakes />
     </StyledSnow>
