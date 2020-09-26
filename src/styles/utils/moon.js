@@ -6,6 +6,9 @@ const StyledMoon = styled.div`
   height: 100px;
   position: relative;
   margin: 0 auto;
+  top: ${({ positiontop }) => (positiontop ? positiontop : 0)};
+  left: ${({ positionleft }) => (positionleft ? positionleft : 0)};
+  transform: ${({ withrotate }) => (withrotate ? ` scale(0.5)` : "none")};
 
   & .moon-colour {
     background-color: #cadcfc;
@@ -23,16 +26,20 @@ const StyledMoon = styled.div`
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: #1e213a; /*1e213a */
+    background: #1e213a;
   }
 `;
-const ClearSkyNight = () => {
+const Moon = ({ positiontop, positionleft, withrotate }) => {
   return (
-    <StyledMoon>
+    <StyledMoon
+      positiontop={positiontop}
+      positionleft={positionleft}
+      withrotate={withrotate}
+    >
       <div className="moon-colour"></div>
       <div className="moon-mask"></div>
     </StyledMoon>
   );
 };
 
-export default ClearSkyNight;
+export default Moon;

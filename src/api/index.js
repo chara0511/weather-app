@@ -1,6 +1,6 @@
 import apiService from "./apiService";
 
-const apiKey = "22402d9247c47bd4b90380dc1bae021d";
+const apiKey = "your api key";
 
 export const currentWeatherByLatLng = async (lat, lng) => {
   const url = `/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${apiKey}&units=metric`;

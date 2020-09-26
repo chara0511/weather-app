@@ -28,7 +28,7 @@ const Animation = () => {
   return (
     <StyledContainer>
       <FormattedBgImages name={current?.weather[0].icon} zindex />
-      <FormattedImages name={current?.weather[0].icon} />
+      <FormattedImages name={current?.weather[0].icon} zindex />
     </StyledContainer>
   );
 };

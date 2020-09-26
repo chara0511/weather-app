@@ -11,6 +11,7 @@ import Thunderstorm from "../styles/Thunderstorm";
 import Snow from "../styles/Snow";
 import Mist from "../styles/Mist";
 import ErrorIcon from "../icons/errorIcon";
+import RainNight from "../styles/RainNight";
 
 const FormattedImages = ({ name, withscale, zindex }) => {
   switch (name) {
@@ -36,8 +37,9 @@ const FormattedImages = ({ name, withscale, zindex }) => {
       return <ShowerRain withscale={withscale} zindex={zindex} />;
 
     case "10d":
-    case "10n":
       return <Rain withscale={withscale} zindex={zindex} />;
+    case "10n":
+      return <RainNight withscale={withscale} zindex={zindex} withrotate />;
 
     case "11d":
     case "11n":
