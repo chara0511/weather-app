@@ -1,5 +1,6 @@
-import React from "react";
-import styled, { css, keyframes } from "styled-components";
+import React from 'react';
+import styled, { css, keyframes } from 'styled-components';
+import PropTypes from 'prop-types';
 
 const animation = keyframes`
  0% {
@@ -16,7 +17,7 @@ const animation = keyframes`
 const StyledSun = styled.div`
   width: 100px;
   height: 100px;
-  margin-left: ${({ marginleft }) => (marginleft ? marginleft : 0)};
+  margin-left: ${({ marginleft }) => marginleft || 0};
 
   & .sun {
     background: #ffec65;
@@ -30,7 +31,7 @@ const StyledSun = styled.div`
         ? css`
             ${animation}
           `
-        : "none"};
+        : 'none'};
     animation-duration: 4s;
     animation-direction: alternate;
     animation-iteration-count: infinite;
@@ -82,8 +83,8 @@ const StyledSun = styled.div`
 `;
 
 const StyledContainer = styled.div`
-  width: ${({ withsizes }) => (withsizes ? withsizes : "100%")};
-  height: ${({ withsizes }) => (withsizes ? withsizes : "100%")};
+  width: ${({ withsizes }) => withsizes || '100%'};
+  height: ${({ withsizes }) => withsizes || '100%'};
   position: relative;
 `;
 
@@ -91,14 +92,20 @@ const Sun = ({ withsizes, marginleft, animated }) => {
   return (
     <StyledSun marginleft={marginleft} animated={animated}>
       <StyledContainer withsizes={withsizes}>
-        <div className="sun"></div>
-        <div className="transparent"></div>
-        <div className="sun-crown"></div>
-        <div className="transparent2"></div>
-        <div className="sun-crown2"></div>
+        <div className="sun" />
+        <div className="transparent" />
+        <div className="sun-crown" />
+        <div className="transparent2" />
+        <div className="sun-crown2" />
       </StyledContainer>
     </StyledSun>
   );
+};
+
+Sun.propTypes = {
+  animated: PropTypes.bool,
+  marginleft: PropTypes.string,
+  withsizes: PropTypes.string,
 };
 
 export default Sun;

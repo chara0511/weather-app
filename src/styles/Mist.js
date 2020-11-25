@@ -1,12 +1,12 @@
-import React from "react";
-
-import styled from "styled-components";
-import Cloud from "./utils/cloud";
-import Foggy from "./utils/foggy";
-import IconContainer from "./utils/iconContainer";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Cloud from './utils/cloud';
+import Foggy from './utils/foggy';
+import IconContainer from './utils/iconContainer';
 
 const StyledMist = styled(IconContainer)`
-  transform: scale(${({ withscale }) => (withscale ? withscale : 1)});
+  transform: scale(${({ withscale }) => withscale || 1});
 `;
 
 const Mist = ({ withscale, zindex }) => {
@@ -16,6 +16,11 @@ const Mist = ({ withscale, zindex }) => {
       <Foggy />
     </StyledMist>
   );
+};
+
+Mist.propTypes = {
+  withscale: PropTypes.string,
+  zindex: PropTypes.bool,
 };
 
 export default Mist;

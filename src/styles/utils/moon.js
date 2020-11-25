@@ -1,14 +1,15 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledMoon = styled.div`
   width: 100px;
   height: 100px;
   position: relative;
   margin: 0 auto;
-  top: ${({ positiontop }) => (positiontop ? positiontop : 0)};
-  left: ${({ positionleft }) => (positionleft ? positionleft : 0)};
-  transform: ${({ withrotate }) => (withrotate ? ` scale(0.5)` : "none")};
+  top: ${({ positiontop }) => positiontop || 0};
+  left: ${({ positionleft }) => positionleft || 0};
+  transform: ${({ withrotate }) => (withrotate ? ` scale(0.5)` : 'none')};
 
   & .moon-colour {
     background-color: #cadcfc;
@@ -31,15 +32,17 @@ const StyledMoon = styled.div`
 `;
 const Moon = ({ positiontop, positionleft, withrotate }) => {
   return (
-    <StyledMoon
-      positiontop={positiontop}
-      positionleft={positionleft}
-      withrotate={withrotate}
-    >
-      <div className="moon-colour"></div>
-      <div className="moon-mask"></div>
+    <StyledMoon positiontop={positiontop} positionleft={positionleft} withrotate={withrotate}>
+      <div className="moon-colour" />
+      <div className="moon-mask" />
     </StyledMoon>
   );
+};
+
+Moon.propTypes = {
+  positiontop: PropTypes.string,
+  positionleft: PropTypes.string,
+  withrotate: PropTypes.bool,
 };
 
 export default Moon;

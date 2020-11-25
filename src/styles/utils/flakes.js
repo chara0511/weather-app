@@ -1,5 +1,5 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
+import React from 'react';
+import styled, { keyframes } from 'styled-components';
 
 const animation = keyframes`
 
@@ -77,22 +77,22 @@ const Flakes = () => {
   return (
     <StyledFlakes>
       <div className="a">
-        <div className="lu"></div>
-        <div className="ru"></div>
-        <div className="lo"></div>
-        <div className="ro"></div>
+        <div className="lu" />
+        <div className="ru" />
+        <div className="lo" />
+        <div className="ro" />
       </div>
       <div className="b">
-        <div className="lu"></div>
-        <div className="ru"></div>
-        <div className="lo"></div>
-        <div className="ro"></div>
+        <div className="lu" />
+        <div className="ru" />
+        <div className="lo" />
+        <div className="ro" />
       </div>
       <div className="c">
-        <div className="lu"></div>
-        <div className="ru"></div>
-        <div className="lo"></div>
-        <div className="ro"></div>
+        <div className="lu" />
+        <div className="ru" />
+        <div className="lo" />
+        <div className="ro" />
       </div>
     </StyledFlakes>
   );

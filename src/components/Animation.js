@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
-import { WeatherContext } from "../context/weatherContext";
-import FormattedBgImages from "../images/FormattedBgImages";
-import FormattedImages from "../images/FormattedImages";
-import media from "../styles/media";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { WeatherContext } from '../context/weatherContext';
+import FormattedBgImages from '../images/FormattedBgImages';
+import FormattedImages from '../images/FormattedImages';
+import media from '../styles/media';
 
 const StyledContainer = styled.div`
   width: 100%;

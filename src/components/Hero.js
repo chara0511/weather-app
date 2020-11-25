@@ -1,15 +1,14 @@
-import React, { useContext } from "react";
-import { WeatherContext } from "../context/weatherContext";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { WeatherContext } from '../context/weatherContext';
 
-import Animation from "./Animation";
-import Temperature from "./Temperature";
-
-import Today from "./Today";
-import styled from "styled-components";
-import Search from "./Search";
-import media from "../styles/media";
-import { theme } from "../styles";
-import ErrorPage from "./ErrorPage";
+import Animation from './Animation';
+import Temperature from './Temperature';
+import Today from './Today';
+import Search from './Search';
+import media from '../styles/media';
+import ErrorPage from './ErrorPage';
+import { theme } from '../styles';
 
 const { colors } = theme;
 
@@ -34,8 +33,7 @@ const Hero = () => {
 
   return (
     <StyledContainer>
-      {errors?.errorInfo === "Unauthorized" ||
-      errors?.errorInfo === "User denied Geolocation" ? (
+      {errors?.errorInfo === 'Unauthorized' || errors?.errorInfo === 'User denied Geolocation' ? (
         <ErrorPage message={errors?.errorInfo} />
       ) : (
         <>
@@ -43,10 +41,7 @@ const Hero = () => {
 
           <Animation />
 
-          <Temperature
-            temp={current?.main.temp}
-            desc={current?.weather[0].description}
-          />
+          <Temperature temp={current?.main.temp} desc={current?.weather[0].description} />
 
           <Today city={current?.name} country={current?.sys.country} />
         </>

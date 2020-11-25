@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import GpsIcon from "../icons/gpsIcon";
-
-import { theme } from ".";
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import GpsIcon from '../icons/gpsIcon';
+import theme from './theme';
 
 const { colors, shadows } = theme;
 
@@ -25,6 +25,10 @@ const GpsButton = ({ currentLocation }) => {
       <GpsIcon />
     </StyledGpsButton>
   );
+};
+
+GpsButton.propTypes = {
+  currentLocation: PropTypes.func.isRequired,
 };
 
 export default GpsButton;

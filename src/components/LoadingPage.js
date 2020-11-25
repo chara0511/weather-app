@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import LoopIcon from "../icons/loopIcon";
+import React from 'react';
+import styled from 'styled-components';
+import LoopIcon from '../icons/loopIcon';
 
 const StyledContainer = styled.div`
   display: flex;

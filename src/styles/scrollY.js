@@ -1,11 +1,12 @@
-import React from "react";
-import styled from "styled-components";
-import theme from "./theme";
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import theme from './theme';
 
 const { colors, shadows } = theme;
 
 const StyledContainer = styled.div`
-  height: ${(props) => (props.withHeight ? props.withHeight : "auto")};
+  height: ${(props) => (props.withHeight ? props.withHeight : 'auto')};
   overflow: auto;
 
   &::-webkit-scrollbar {
@@ -39,8 +40,12 @@ const StyledContainer = styled.div`
   }
 `;
 
-const ScrollY = (props) => {
-  return <StyledContainer {...props}>{props.children}</StyledContainer>;
+const ScrollY = ({ withHeight, children }) => {
+  return <StyledContainer withHeight={withHeight}>{children}</StyledContainer>;
 };
 
+ScrollY.propTypes = {
+  withHeight: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
+};
 export default ScrollY;

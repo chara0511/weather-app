@@ -1,16 +1,14 @@
-import React, { useContext, useEffect } from "react";
-import Hero from "./Hero";
-import Details from "./Details";
-import { getCurrentLocation } from "../utils/location";
-
-import styled from "styled-components";
-
-import { WeatherContext } from "../context/weatherContext";
-import media from "../styles/media";
-import LoadingPage from "./LoadingPage";
+import React, { useContext, useEffect } from 'react';
+import styled from 'styled-components';
+import { WeatherContext } from '../context/weatherContext';
+import Hero from './Hero';
+import Details from './Details';
+import { getCurrentLocation } from '../utils/location';
+import LoadingPage from './LoadingPage';
+import media from '../styles/media';
 
 const StyledContainer = styled.div`
-  max-width: 100%; /* 459px in 1440px */
+  max-width: 100%;
   overflow-x: auto;
 
   ${media.mdDesktop`
@@ -25,7 +23,6 @@ const Main = () => {
     getCurrentLocation()
       .then(({ lat, lng }) => getDataByLatLng(lat, lng))
       .catch((error) => showError({ message: error.message }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

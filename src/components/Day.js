@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { WeatherContext } from '../context/weatherContext';
+import FormattedImages from '../images/FormattedImages';
+import { getFahrenheitValue } from '../utils';
+import { theme } from '../styles';
 
-import styled from "styled-components";
-import { WeatherContext } from "../context/weatherContext";
-
-import FormattedImages from "../images/FormattedImages";
-
-import { theme } from "../styles";
-import { getFahrenheitValue } from "../utils";
 const { colors, fontSizes } = theme;
 
 const StyledContainer = styled.div`
@@ -50,13 +49,9 @@ const StyledTemp = styled.div`
 const Day = ({ daily, day }) => {
   const { fahrenheit } = useContext(WeatherContext);
 
-  const valueMax = fahrenheit
-    ? getFahrenheitValue(daily.temp.max)
-    : daily.temp.max;
+  const valueMax = fahrenheit ? getFahrenheitValue(daily.temp.max) : daily.temp.max;
 
-  const valueMin = fahrenheit
-    ? getFahrenheitValue(daily.temp.min)
-    : daily.temp.min;
+  const valueMin = fahrenheit ? getFahrenheitValue(daily.temp.min) : daily.temp.min;
 
   return (
     <StyledContainer>
@@ -67,16 +62,21 @@ const Day = ({ daily, day }) => {
       <StyledTemp>
         <p>
           {parseFloat(valueMax).toFixed(0)}
-          {fahrenheit ? "ºf" : "ºc"}
+          {fahrenheit ? 'ºf' : 'ºc'}
         </p>
 
         <p>
           {parseFloat(valueMin).toFixed(0)}
-          {fahrenheit ? "ºf" : "ºc"}
+          {fahrenheit ? 'ºf' : 'ºc'}
         </p>
       </StyledTemp>
     </StyledContainer>
   );
+};
+
+Day.propTypes = {
+  daily: PropTypes.object.isRequired,
+  day: PropTypes.string.isRequired,
 };
 
 export default Day;

@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
-import { WeatherContext } from "../context/weatherContext";
-import { theme } from "../styles";
-import { getFahrenheitValue } from "../utils";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { WeatherContext } from '../context/weatherContext';
+import { theme } from '../styles';
+import { getFahrenheitValue } from '../utils';
 
 const { fontSizes } = theme;
 
@@ -38,12 +39,17 @@ const Temperature = ({ temp = 0, desc }) => {
       <Temp>
         {parseFloat(value).toFixed(0)}
 
-        <span>{fahrenheit ? "ºf" : "ºc"}</span>
+        <span>{fahrenheit ? 'ºf' : 'ºc'}</span>
       </Temp>
 
       <Desc>{desc}</Desc>
     </StyledContainer>
   );
+};
+
+Temperature.propTypes = {
+  temp: PropTypes.number.isRequired,
+  desc: PropTypes.string.isRequired,
 };
 
 export default Temperature;

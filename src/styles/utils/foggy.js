@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes } from 'styled-components';
 
 const animation = keyframes`
   0% { transform: translateX(-0.5em); }
@@ -29,7 +29,7 @@ const StyledFoggy = styled.div`
   & .fog::after,
   & .fog2::before,
   & .fog2::after {
-    content: "";
+    content: '';
     position: absolute;
     height: 0.5em;
     color: rgba(255, 255, 255, 0.25);
@@ -66,8 +66,8 @@ const StyledFoggy = styled.div`
 const Foggy = () => {
   return (
     <StyledFoggy>
-      <div className="fog"></div>
-      <div className="fog2"></div>
+      <div className="fog" />
+      <div className="fog2" />
     </StyledFoggy>
   );
 };

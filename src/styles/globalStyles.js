@@ -1,7 +1,8 @@
-import { createGlobalStyle } from "styled-components";
-import theme from "./theme";
-import FontFaces from "./fonts";
-import TransitionStyles from "./transitionStyles";
+import { createGlobalStyle } from 'styled-components';
+import theme from './theme';
+import FontFaces from './fonts';
+import TransitionStyles from './transitionStyles';
+
 const { colors, fontSizes, fonts } = theme;
 
 const GlobalStyle = createGlobalStyle`

@@ -1,20 +1,14 @@
-import React, { useReducer } from "react";
-import { WeatherContext } from "./weatherContext";
-import { WeatherReducer } from "./weatherReducer";
-
-import {
-  CURRENT_WEATHER,
-  WEATHER_FORECAST,
-  ERROR,
-  CELSIUS,
-  FAHRENHEIT,
-} from "../types";
+import React, { useReducer } from 'react';
+import PropTypes from 'prop-types';
+import { WeatherContext } from './weatherContext';
+import { WeatherReducer } from './weatherReducer';
+import { CURRENT_WEATHER, WEATHER_FORECAST, ERROR, CELSIUS, FAHRENHEIT } from '../types';
 import {
   currentWeatherByLatLng,
   currentWeatherByTag,
   forecastWeatherByLatLng,
   forecastWeatherByTag,
-} from "../api";
+} from '../api';
 
 const WeatherState = ({ children }) => {
   const initialState = {
@@ -27,6 +21,10 @@ const WeatherState = ({ children }) => {
   };
 
   const [state, dispatch] = useReducer(WeatherReducer, initialState);
+
+  const showError = (error) => {
+    dispatch({ type: ERROR, payload: error });
+  };
 
   const getDataByTag = async (name) => {
     try {
@@ -41,7 +39,6 @@ const WeatherState = ({ children }) => {
 
       dispatch({ type: WEATHER_FORECAST, payload: forecast });
     } catch (error) {
-      console.log(error);
       showError({ message: error.response?.statusText });
     }
   };
@@ -56,13 +53,8 @@ const WeatherState = ({ children }) => {
 
       dispatch({ type: WEATHER_FORECAST, payload: forecast });
     } catch (error) {
-      console.log(error.error.message);
       showError({ message: error.response?.statusText });
     }
-  };
-
-  const showError = (error) => {
-    dispatch({ type: ERROR, payload: error });
   };
 
   const switchCelsius = () => {
@@ -92,6 +84,10 @@ const WeatherState = ({ children }) => {
       {children}
     </WeatherContext.Provider>
   );
+};
+
+WeatherState.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
 };
 
 export default WeatherState;

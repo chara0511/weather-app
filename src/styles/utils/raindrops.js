@@ -1,5 +1,5 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
+import React from 'react';
+import styled, { keyframes } from 'styled-components';
 
 const animation = keyframes`
   0% { top: 0px; }
@@ -49,10 +49,10 @@ const StyledRaindrops = styled.div`
 const Raindrops = () => {
   return (
     <StyledRaindrops>
-      <div className="rain drops" id="d1"></div>
-      <div className="rain drops" id="d2"></div>
-      <div className="rain drops" id="d3"></div>
-      <div className="rain drops" id="d4"></div>
+      <div className="rain drops" id="d1" />
+      <div className="rain drops" id="d2" />
+      <div className="rain drops" id="d3" />
+      <div className="rain drops" id="d4" />
     </StyledRaindrops>
   );
 };

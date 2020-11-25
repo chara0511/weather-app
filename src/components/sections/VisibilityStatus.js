@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
-import { WeatherContext } from "../../context/weatherContext";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { WeatherContext } from '../../context/weatherContext';
 
-import { theme } from "../../styles";
-import { getMilesValue } from "../../utils";
+import { theme } from '../../styles';
+import { getMilesValue } from '../../utils';
+
 const { colors, fontSizes } = theme;
 
-const SubTitle = styled.h6`
+const StyledSubTitle = styled.h6`
   font-size: ${fontSizes.md};
   line-height: 19px;
 `;
@@ -26,17 +27,15 @@ const StyledStatus = styled.h2`
 const VisibilityStatus = ({ visibility = 0 }) => {
   const { fahrenheit } = useContext(WeatherContext);
 
-  const value = fahrenheit
-    ? parseFloat(getMilesValue(visibility)).toFixed(1)
-    : visibility;
+  const value = fahrenheit ? parseFloat(getMilesValue(visibility)).toFixed(1) : visibility;
 
   return (
     <>
-      <SubTitle>Visibility </SubTitle>
+      <StyledSubTitle>Visibility </StyledSubTitle>
 
       <StyledStatus>
         {value}
-        <span>{fahrenheit ? " miles" : " m"}</span>
+        <span>{fahrenheit ? ' miles' : ' m'}</span>
       </StyledStatus>
     </>
   );

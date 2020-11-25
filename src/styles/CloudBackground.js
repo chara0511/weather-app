@@ -1,6 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import Cloud from "./utils/cloud";
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import Cloud from './utils/cloud';
 
 const StyledContainer = styled.div`
   position: absolute;
@@ -18,6 +19,10 @@ const CloudBackground = ({ night }) => {
       <Cloud positionbottom="0" positionright="0" night={night} />
     </StyledContainer>
   );
+};
+
+CloudBackground.propTypes = {
+  night: PropTypes.bool,
 };
 
 export default CloudBackground;

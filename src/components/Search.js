@@ -1,20 +1,17 @@
-import React, { useState, useRef, useContext, useLayoutEffect } from "react";
-
-import ListCities from "./ListCities";
-import { getCurrentLocation } from "../utils/location";
-import SearchIcon from "../icons/searchIcon";
-import CloseIcon from "../icons/closeIcon";
-
-import { v4 as uuidv4 } from "uuid";
-
-import styled from "styled-components";
-import GpsButton from "../styles/gpsButton";
-import media from "../styles/media";
-import { theme } from "../styles";
-import ScrollY from "../styles/scrollY";
-import { WeatherContext } from "../context/weatherContext";
-import LoopIcon from "../icons/loopIcon";
-import ErrorIcon from "../icons/errorIcon";
+import React, { useState, useRef, useContext, useLayoutEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import styled from 'styled-components';
+import ListCities from './ListCities';
+import { getCurrentLocation } from '../utils/location';
+import SearchIcon from '../icons/searchIcon';
+import CloseIcon from '../icons/closeIcon';
+import GpsButton from '../styles/gpsButton';
+import media from '../styles/media';
+import ScrollY from '../styles/scrollY';
+import { WeatherContext } from '../context/weatherContext';
+import LoopIcon from '../icons/loopIcon';
+import ErrorIcon from '../icons/errorIcon';
+import { theme } from '../styles';
 
 const { colors, fontSizes, shadows, transition } = theme;
 
@@ -142,16 +139,10 @@ const StyledSubmit = styled.button`
 `;
 
 const Search = () => {
-  const {
-    current,
-    errors,
-    getDataByTag,
-    getDataByLatLng,
-    showError,
-  } = useContext(WeatherContext);
+  const { current, errors, getDataByTag, getDataByLatLng, showError } = useContext(WeatherContext);
 
   const [state, setState] = useState({
-    city: "",
+    city: '',
     cities: [],
   });
 
@@ -162,7 +153,7 @@ const Search = () => {
   const ref = useRef(null);
 
   const handleChange = (e) => {
-    showError({ message: "" });
+    showError({ message: '' });
 
     setState({
       ...state,
@@ -175,10 +166,14 @@ const Search = () => {
     return setLoading(false);
   };
 
+  const hideSearch = () => {
+    setActive(false);
+  };
+
   useLayoutEffect(() => {
     if (Object.keys(errors).length === 0) {
       setState((prev) => ({
-        city: "",
+        city: '',
         cities: [
           { id: uuidv4(), name: current.name, country: current.sys.country },
           ...prev.cities,
@@ -189,18 +184,17 @@ const Search = () => {
     } else {
       ref.current.focus();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [errors?.message]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
 
-    if (state.city.trim() === "") {
+    if (state.city.trim() === '') {
       setTimeout(() => {
         setLoading(false);
       }, 300);
-      showError({ message: "Woops, enter a valid city name" });
+      showError({ message: 'Woops, enter a valid city name' });
       return;
     }
 
@@ -211,10 +205,6 @@ const Search = () => {
     setActive(true);
 
     ref.current.focus();
-  };
-
-  const hideSearch = () => {
-    setActive(false);
   };
 
   const currentLocation = () => {
@@ -243,15 +233,14 @@ const Search = () => {
               value={state.city}
             />
 
-            <StyledSubmit type="submit">
-              {loading ? <LoopIcon /> : "Search"}
-            </StyledSubmit>
+            <StyledSubmit type="submit">{loading ? <LoopIcon /> : 'Search'}</StyledSubmit>
           </StyledForm>
 
           <StyledAlert>
             {errors?.message && (
               <>
-                <ErrorIcon /> <p>{errors?.message}</p>
+                <ErrorIcon />
+                <p>{errors?.message}</p>
               </>
             )}
           </StyledAlert>

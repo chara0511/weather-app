@@ -1,13 +1,13 @@
-import React from "react";
-
-import styled from "styled-components";
-import Sun from "./utils/sun";
-import Cloud from "./utils/cloud";
-import IconContainer from "./utils/iconContainer";
-import Raindrops from "./utils/raindrops";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Sun from './utils/sun';
+import Cloud from './utils/cloud';
+import IconContainer from './utils/iconContainer';
+import Raindrops from './utils/raindrops';
 
 const StyledRain = styled(IconContainer)`
-  transform: scale(${({ withscale }) => (withscale ? withscale : 1)});
+  transform: scale(${({ withscale }) => withscale || 1});
 `;
 
 const Rain = ({ withscale, zindex }) => {
@@ -20,6 +20,11 @@ const Rain = ({ withscale, zindex }) => {
       <Raindrops />
     </StyledRain>
   );
+};
+
+Rain.propTypes = {
+  withscale: PropTypes.string,
+  zindex: PropTypes.bool,
 };
 
 export default Rain;

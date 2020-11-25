@@ -1,9 +1,9 @@
 export const WeatherReducer = (state, action) => {
   switch (action.type) {
-    case "SHOWER":
+    case 'SHOWER':
       return state;
 
-    case "CURRENT_WEATHER":
+    case 'CURRENT_WEATHER':
       return {
         ...state,
         current: action.payload,
@@ -13,27 +13,27 @@ export const WeatherReducer = (state, action) => {
         loading: false,
       };
 
-    case "WEATHER_FORECAST":
+    case 'WEATHER_FORECAST':
       return {
         ...state,
         forecast: action.payload,
       };
 
-    case "ERROR":
+    case 'ERROR':
       return {
         ...state,
         errors: action.payload,
         loading: false,
       };
 
-    case "CELSIUS":
+    case 'CELSIUS':
       return {
         ...state,
         celsius: true,
         fahrenheit: false,
       };
 
-    case "FAHRENHEIT":
+    case 'FAHRENHEIT':
       return {
         ...state,
         celsius: false,

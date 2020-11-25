@@ -1,11 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import styled from "styled-components";
-import { theme } from "../../styles";
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { theme } from '../../styles';
 
 const { colors, fontSizes, transition } = theme;
 
-const SubTitle = styled.h6`
+const StyledSubTitle = styled.h6`
   font-size: ${fontSizes.md};
   line-height: 19px;
 `;
@@ -59,7 +60,7 @@ const StyledResult = styled.div`
 const HumidityStatus = ({ humidity }) => {
   return (
     <>
-      <SubTitle>Humidity </SubTitle>
+      <StyledSubTitle>Humidity </StyledSubTitle>
 
       <StyledStatus>
         {humidity}
@@ -81,6 +82,10 @@ const HumidityStatus = ({ humidity }) => {
       </StyledBar>
     </>
   );
+};
+
+HumidityStatus.propTypes = {
+  humidity: PropTypes.number,
 };
 
 export default HumidityStatus;

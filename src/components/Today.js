@@ -1,8 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import { theme } from "../styles";
-import MapMarkerIcon from "../icons/mapMarkerIcon";
-import { getNow } from "../utils/date";
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { theme } from '../styles';
+import MapMarkerIcon from '../icons/mapMarkerIcon';
+import { getNow } from '../utils/date';
 
 const { fontSizes } = theme;
 
@@ -31,13 +32,25 @@ const Today = ({ city, country }) => {
   const today = getNow();
   return (
     <StyledContainer>
-      <DateNow>Today · {today}</DateNow>
+      <DateNow>
+        Today
+        {' · '}
+        {today}
+      </DateNow>
 
       <MapMarker>
-        <MapMarkerIcon /> {city}, {country}
+        <MapMarkerIcon />
+        {city}
+        {', '}
+        {country}
       </MapMarker>
     </StyledContainer>
   );
+};
+
+Today.propTypes = {
+  city: PropTypes.string.isRequired,
+  country: PropTypes.string.isRequired,
 };
 
 export default Today;

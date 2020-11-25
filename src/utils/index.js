@@ -3,11 +3,11 @@ export const getFahrenheitValue = (celsiusValue) => {
 };
 
 export const getMphValue = (mpsValue) => {
-  //mps = metre/sec
+  // mps = metre/sec
   return mpsValue * 2.237;
 };
 
 export const getMilesValue = (m) => {
-  //m = meter
+  // m = meter
   return m / 1609;
 };

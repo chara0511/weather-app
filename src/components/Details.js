@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
-import Forecast from "./Forecast";
-import Hightlights from "./Hightlights";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { WeatherContext } from '../context/weatherContext';
+import Forecast from './Forecast';
+import Hightlights from './Hightlights';
+import Footer from './Footer';
+import media from '../styles/media';
+import SwitchTemp from './SwitchTemp';
+import { theme } from '../styles';
 
-import { theme } from "../styles";
-import styled from "styled-components";
-import media from "../styles/media";
-import { WeatherContext } from "../context/weatherContext";
-import SwitchTemp from "./SwitchTemp";
-import Footer from "./Footer";
 const { colors } = theme;
 
 const StyledContainer = styled.div`
@@ -36,8 +36,8 @@ const Details = () => {
 
   return (
     <StyledContainer>
-      {errors?.errorInfo === "Unauthorized" ||
-      errors?.errorInfo === "User denied Geolocation" ? null : (
+      {errors?.errorInfo === 'Unauthorized' ||
+      errors?.errorInfo === 'User denied Geolocation' ? null : (
         <>
           <SwitchTemp />
 

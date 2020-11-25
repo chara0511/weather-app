@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react';
 
-import styled from "styled-components";
-import { WeatherContext } from "../../context/weatherContext";
-import NavigationIcon from "../../icons/navigationIcon";
+import styled from 'styled-components';
+import { WeatherContext } from '../../context/weatherContext';
+import NavigationIcon from '../../icons/navigationIcon';
 
-import { theme } from "../../styles";
-import { getMphValue } from "../../utils";
+import { getMphValue } from '../../utils';
+import { theme } from '../../styles';
+
 const { colors, fontSizes } = theme;
 
 const SubTitle = styled.h6`
@@ -65,7 +66,7 @@ const WindStatus = ({ windSpeed = 0 }) => {
 
       <StyledStatus>
         {parseFloat(value).toFixed(1)}
-        <span>{fahrenheit ? "mph" : "mps"}</span>
+        <span>{fahrenheit ? 'mph' : 'mps'}</span>
       </StyledStatus>
 
       <StyledDetails>

@@ -1,14 +1,12 @@
-import React, { useContext } from "react";
-import { WeatherContext } from "../context/weatherContext";
-
-import AirPressureStatus from "./sections/AirPressureStatus";
-import HumidityStatus from "./sections/HumidityStatus";
-import VisibilityStatus from "./sections/VisibilityStatus";
-import WindStatus from "./sections/WindStatus";
-
-import styled from "styled-components";
-import media from "../styles/media";
-import { theme } from "../styles";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { WeatherContext } from '../context/weatherContext';
+import AirPressureStatus from './sections/AirPressureStatus';
+import HumidityStatus from './sections/HumidityStatus';
+import VisibilityStatus from './sections/VisibilityStatus';
+import WindStatus from './sections/WindStatus';
+import media from '../styles/media';
+import { theme } from '../styles';
 
 const { colors, fontSizes } = theme;
 

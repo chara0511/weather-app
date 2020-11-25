@@ -1,6 +1,7 @@
-import React from "react";
-import styled, { css, keyframes } from "styled-components";
-import { theme } from "..";
+import React from 'react';
+import styled, { css, keyframes } from 'styled-components';
+import PropTypes from 'prop-types';
+import { theme } from '..';
 
 const { colors } = theme;
 
@@ -18,30 +19,28 @@ const StyledCloud = styled.div`
   position: absolute;
   width: 100px;
   z-index: ${({ zindex }) => (zindex ? 6 : 0)};
-  top: ${({ positiontop }) => (positiontop ? positiontop : "auto")};
-  right: ${({ positionright }) => (positionright ? positionright : "auto")};
-  left: ${({ positionleft }) => (positionleft ? positionleft : "auto")};
-  bottom: ${({ positionbottom }) => (positionbottom ? positionbottom : "auto")};
+  top: ${({ positiontop }) => positiontop || 'auto'};
+  right: ${({ positionright }) => positionright || 'auto'};
+  left: ${({ positionleft }) => positionleft || 'auto'};
+  bottom: ${({ positionbottom }) => positionbottom || 'auto'};
 
   & .bg {
     border-radius: 50% 50% 10% 0;
-    background-color: ${({ night }) =>
-      night ? `${colors.cloudNight}` : `${colors.white}`};
-    height: ${({ withsizes }) => (withsizes ? withsizes : "100%")};
-    left: ${({ withsizes }) => (withsizes ? "-10%" : "8%")};
+    background-color: ${({ night }) => (night ? `${colors.cloudNight}` : `${colors.white}`)};
+    height: ${({ withsizes }) => withsizes || '100%'};
+    left: ${({ withsizes }) => (withsizes ? '-10%' : '8%')};
     position: absolute;
-    top: ${({ withsizes }) => (withsizes ? "30%" : "auto")};
-    width: ${({ withsizes }) => (withsizes ? withsizes : "100%")};
+    top: ${({ withsizes }) => (withsizes ? '30%' : 'auto')};
+    width: ${({ withsizes }) => withsizes || '100%'};
     opacity: 1;
-    transform: ${({ animated }) =>
-      animated ? "translate(200%, 0px)" : "none"};
+    transform: ${({ animated }) => (animated ? 'translate(200%, 0px)' : 'none')};
 
     animation-name: ${({ animated }) =>
       animated
         ? css`
             ${cloudAnimation}
           `
-        : "none"};
+        : 'none'};
     animation-duration: 5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
@@ -49,14 +48,13 @@ const StyledCloud = styled.div`
 
     &:before,
     &:after {
-      content: "";
+      content: '';
       border-radius: 50%;
       position: absolute;
     }
 
     &:before {
-      background-color: ${({ night }) =>
-        night ? `${colors.cloudNight}` : `${colors.white}`};
+      background-color: ${({ night }) => (night ? `${colors.cloudNight}` : `${colors.white}`)};
       bottom: 0;
       height: 65%;
       left: -35%;
@@ -65,8 +63,7 @@ const StyledCloud = styled.div`
     }
 
     &:after {
-      background-color: ${({ night }) =>
-        night ? `${colors.cloudNight}` : `${colors.white}`};
+      background-color: ${({ night }) => (night ? `${colors.cloudNight}` : `${colors.white}`)};
       bottom: 0;
       height: 50%;
       right: -20%;
@@ -96,9 +93,20 @@ const Cloud = ({
       withsizes={withsizes}
       zindex={zindex}
     >
-      <div className="bg"></div>
+      <div className="bg" />
     </StyledCloud>
   );
+};
+
+Cloud.propTypes = {
+  animated: PropTypes.bool,
+  night: PropTypes.bool,
+  positionbottom: PropTypes.string,
+  positionleft: PropTypes.string,
+  positionright: PropTypes.string,
+  positiontop: PropTypes.string,
+  withsizes: PropTypes.string,
+  zindex: PropTypes.bool,
 };
 
 export default Cloud;

@@ -1,11 +1,11 @@
-import React from "react";
-
-import styled from "styled-components";
-import { theme } from "../../styles";
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { theme } from '../../styles';
 
 const { colors, fontSizes } = theme;
 
-const SubTitle = styled.h6`
+const StyledSubTitle = styled.h6`
   font-size: ${fontSizes.md};
   line-height: 19px;
 `;
@@ -25,7 +25,7 @@ const StyledStatus = styled.h2`
 const AirPressureStatus = ({ pressure }) => {
   return (
     <>
-      <SubTitle>Air Pressure</SubTitle>
+      <StyledSubTitle>Air Pressure</StyledSubTitle>
 
       <StyledStatus>
         {pressure}
@@ -33,6 +33,10 @@ const AirPressureStatus = ({ pressure }) => {
       </StyledStatus>
     </>
   );
+};
+
+AirPressureStatus.propTypes = {
+  pressure: PropTypes.number,
 };
 
 export default AirPressureStatus;

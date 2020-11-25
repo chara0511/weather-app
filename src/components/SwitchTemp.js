@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
-import { WeatherContext } from "../context/weatherContext";
-import { TempButton } from "../styles";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { WeatherContext } from '../context/weatherContext';
+import { TempButton } from '../styles';
 
 const StyledContainer = styled.div`
   display: flex;
@@ -9,9 +9,7 @@ const StyledContainer = styled.div`
 `;
 
 const SwitchTemp = () => {
-  const { celsius, fahrenheit, switchCelsius, switchFahrenheit } = useContext(
-    WeatherContext
-  );
+  const { celsius, fahrenheit, switchCelsius, switchFahrenheit } = useContext(WeatherContext);
 
   return (
     <StyledContainer>

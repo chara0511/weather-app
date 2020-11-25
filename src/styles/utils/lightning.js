@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Lightning = styled.div`
   height: 100px;
@@ -6,7 +6,7 @@ const Lightning = styled.div`
   width: 100px;
 
   &:before {
-    content: "";
+    content: '';
     background: #ffd632;
     height: 40%;
     right: -5%;
@@ -18,7 +18,7 @@ const Lightning = styled.div`
   }
 
   &:after {
-    content: "";
+    content: '';
     border-right: 2em solid transparent;
     border-top: 3em solid #ffd632;
     bottom: -10%;

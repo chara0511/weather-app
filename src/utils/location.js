@@ -3,13 +3,13 @@ export const getCurrentLocation = () =>
     if (!navigator || !navigator.geolocation) {
       reject(
         new Error(
-          "Error when trying to get your Geolocation, maybe  is not supported by your browser. "
-        )
+          'Error when trying to get your Geolocation, maybe  is not supported by your browser. ',
+        ),
       );
     }
 
     const success = (position) => {
-      //console.log(position.coords.latitude, position.coords.longitude);
+      // console.log(position.coords.latitude, position.coords.longitude);
 
       resolve({
         lat: position.coords.latitude,

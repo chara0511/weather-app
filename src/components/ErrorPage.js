@@ -1,6 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import ErrorIcon from "../icons/errorIcon";
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import ErrorIcon from '../icons/errorIcon';
 
 const StyledContainer = styled.div`
   align-items: center;
@@ -24,6 +25,10 @@ const ErrorPage = ({ message }) => {
       <h1>{message}</h1>
     </StyledContainer>
   );
+};
+
+ErrorPage.propTypes = {
+  message: PropTypes.string.isRequired,
 };
 
 export default ErrorPage;

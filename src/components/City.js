@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
-import { theme } from "../styles";
-import NextIcon from "../icons/nextIcon";
-import { WeatherContext } from "../context/weatherContext";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { WeatherContext } from '../context/weatherContext';
+import { theme } from '../styles';
+import NextIcon from '../icons/nextIcon';
 
 const { colors } = theme;
 
@@ -36,16 +37,24 @@ const City = ({ name, country, hideSearch }) => {
   const { getDataByTag } = useContext(WeatherContext);
 
   const handleClick = async () => {
-    console.log(name);
     await getDataByTag(name);
     return hideSearch();
   };
 
   return (
     <StyledContainer onClick={handleClick}>
-      {name}, {country} <NextIcon />
+      {name}
+      {', '}
+      {country}
+      <NextIcon />
     </StyledContainer>
   );
+};
+
+City.propTypes = {
+  name: PropTypes.string.isRequired,
+  country: PropTypes.string.isRequired,
+  hideSearch: PropTypes.func.isRequired,
 };
 
 export default City;

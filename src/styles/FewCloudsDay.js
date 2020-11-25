@@ -1,12 +1,12 @@
-import React from "react";
-
-import styled from "styled-components";
-import Sun from "./utils/sun";
-import Cloud from "./utils/cloud";
-import IconContainer from "./utils/iconContainer";
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import Sun from './utils/sun';
+import Cloud from './utils/cloud';
+import IconContainer from './utils/iconContainer';
 
 const StyledFewCloudsDay = styled(IconContainer)`
-  transform: scale(${({ withscale }) => (withscale ? withscale : 1)});
+  transform: scale(${({ withscale }) => withscale || 1});
 `;
 
 const FewCloudsDay = ({ withscale, zindex }) => {
@@ -17,6 +17,11 @@ const FewCloudsDay = ({ withscale, zindex }) => {
       <Cloud withsizes="50%" animated zindex={zindex} />
     </StyledFewCloudsDay>
   );
+};
+
+FewCloudsDay.propTypes = {
+  withscale: PropTypes.string,
+  zindex: PropTypes.bool,
 };
 
 export default FewCloudsDay;

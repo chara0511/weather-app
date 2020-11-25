@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
-import Day from "./Day";
-
-import styled from "styled-components";
-
-import { WeatherContext } from "../context/weatherContext";
-import { getListDays } from "../utils/date";
-import media from "../styles/media";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { WeatherContext } from '../context/weatherContext';
+import { getListDays } from '../utils/date';
+import Day from './Day';
+import media from '../styles/media';
 
 const StyledContainer = styled.div`
   column-gap: 26px;
